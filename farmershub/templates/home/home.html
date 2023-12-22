@@ -1,0 +1,58 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+
+
+
+    <!--carosal-->
+    {% block content %}
+    {% include "home/navbar.html" %}
+
+      
+   {% include "home/carosal.html" %}
+
+  {% include "home/about.html" %}
+  {% include "home/review.html" %}
+ 
+
+
+
+
+
+  <!--services-->
+  <section class="services">
+    <h6>Our Services</h6>
+  
+
+
+  </section>
+  
+  
+
+
+
+<!-- Footer -->
+
+
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+        window.addEventListener('scroll', function () {
+          let scrollValue = window.scrollY || document.documentElement.scrollTop;
+          const navbarElement = document.getElementById('navbar')
+
+          if (scrollValue > 50) {
+            navbarElement.classList.add('navbar-scrolled')
+          } else {
+            navbarElement.classList.remove('navbar-scrolled')
+          }
+          console.log(scrollValue);
+
+        })
+      })
+
+    </script>
+</body>
+
+</html>
+{% endblock content %}
