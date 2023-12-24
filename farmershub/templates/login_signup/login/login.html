@@ -4,7 +4,7 @@
 {% block content %}
 	
 
-<section class="vh-30 gradient-custom" style="background:linear-gradient(to right,white,green,white);" >
+<section class="vh-30 gradient-custom" style="  background-image: linear-gradient(TO right, #7fb825, rgb(198, 198, 198));" >
 	<img src="/static/images/login/bg.png" width="1000px " height="900px" style="position: absolute; top: 260px;">
 
   <div class="container py-5 h-5 w-100">
@@ -17,7 +17,7 @@
             <div class="mb-md-5 mt-md-4 pb-5">
            <img src="/static/images/home/logoo.png" alt="" height="100px" width="100px">
               <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-              <p class="text-white-50 mb-5">Please enter your login and password!</p>
+              <p class="text-white-50 mb-5">Please enter your Email and password!</p>
               <form  action="{% url 'login' %}" method="post">
                 {% csrf_token %}
 
