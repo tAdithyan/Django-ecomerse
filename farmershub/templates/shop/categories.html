@@ -1,37 +1,52 @@
 
-  
+    
+  {% block content %}
+
 
   <h2 style="text-align: center; margin-top: 30px;" class="products-heading">OUR PRODUCTS</h2>
-  <div class="categories">
+
   
+
+  <div class="categories">
+
     <div class="category-iteam " tabindex="1">
      
       <a href="#">All</a>
-
-       </div>
-    <div class="category-iteam " tabindex="1">
      
-      <a href="#">vegitables</a>
+
 
        </div>
-       <div class="category-iteam " tabindex="1">
+
+       {% for i in Catagory  %}
+
+    <div class="category-iteam " tabindex="1">
+
+
+      <a href="#">{{i.title}}</a>
+
+
+       </div>
+       <!-- <div class="category-iteam " tabindex="1">
         <a href="#">Fruites</a>
-         </div>
-         <div class="category-iteam " tabindex="1">
+         </div> -->
+         <!-- <div class="category-iteam " tabindex="1">
           <a href="#">Sproutes</a>
-           </div>
-           <div class="category-iteam " tabindex="1">
+           </div> -->
+           <!-- <div class="category-iteam " tabindex="1">
             <a href="#">Fish</a>
-             </div>
-             <div class="category-iteam " tabindex="1">
+             </div> -->
+             <!-- <div class="category-iteam " tabindex="1">
      
               <a href="#">Meat</a>
         
-               </div>
-               <div class="category-iteam " tabindex="1">
+               </div> -->
+               <!-- <div class="category-iteam " tabindex="1">
      
                 <a href="#">Egg</a>
           
-                 </div>
-
+                 </div> -->
+                 {% endfor %}
+                 {% endblock content %}
   </div>
+
+  

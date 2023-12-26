@@ -7,7 +7,11 @@ from django.contrib.auth import logout
 
 # Create your views here.
 def shop(request):
-  return render(request,'shop/shop.html')
+  Catagory=Categories.objects.all()
+  categorytitle={
+          'Catagory':Catagory
+  }
+  return render(request,'shop/shop.html',categorytitle)
 def log_in(request):
  if request.method=="POST":
 

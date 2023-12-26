@@ -154,9 +154,9 @@ body::-webkit-scrollbar {
 }
  
   
-.category-iteam a{
+.categories .category-iteam a{
   text-decoration: none;
-
+   text-transform: uppercase;
 
   border-radius: 10px;
   user-select: none;
