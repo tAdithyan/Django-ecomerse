@@ -1,44 +1,19 @@
+{% load static %}
 <section class="category" id="category">
   <h1 class="heading">shop by<span>category</span></h1>
   <div class="box-container">
-    <div class="box">
-      <h3>Vegitables</h3>
-      <p>up to 50% off</p>
-      <img src="./images/carrot.jpg" alt="" />
+    {% for cate in Catagory  %}
+      
+   
+    <div class="box" >
+      <h3>{{cate.categoryname}}</h3>
+      <!-- <p>up to {{cate.discount}} off</p> -->
+      <img src="media/{{cate.image}}" alt="" />
       <a href="#" class="btn">shop now</a>
     </div>
+    {% endfor %}
 
-    <div class="box">
-      <h3>Vegitables</h3>
-      <p>up to 50% off</p>
-      <img src="./images/carrot.jpg" alt="" />
-      <a href="#" class="btn">shop now</a>
-    </div>
-
-    <div class="box">
-      <h3>Vegitables</h3>
-      <p>up to 50% off</p>
-      <img src="./images/carrot.jpg" alt="" />
-      <a href="#" class="btn">shop now</a>
-    </div>
-
-    <div class="box">
-      <h3>Vegitables</h3>
-      <p>up to 50% off</p>
-      <img src="./images/carrot.jpg" alt="" />
-      <a href="#" class="btn">shop now</a>
-    </div>
-    <div class="box">
-      <h3>Vegitables</h3>
-      <p>up to 50% off</p>
-      <img src="./images/carrot.jpg" alt="" />
-      <a href="#" class="btn">shop now</a>
-    </div>
-    <div class="box">
-      <h3>Vegitables</h3>
-      <p>up to 50% off</p>
-      <img src="./images/carrot.jpg" alt="" />
-      <a href="#" class="btn">shop now</a>
-    </div>
+    
+    
   </div>
 </section>
