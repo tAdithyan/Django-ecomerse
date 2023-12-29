@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   font-family: Nunito, sans-serif;
+  font-size: 18px;
   
 
 }
@@ -274,8 +275,113 @@ body::-webkit-scrollbar {
     font-size: 10px;
   }
  }
+/* banner */
+.banner-container{
+  display: flex;
+gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.banner-container .banner{
+  position: relative;
+  flex: 1 1 40rem;
+  height: 25rem;
+  overflow: hidden;
+  
+}
+.banner-container .banner img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.banner-container .banner .content{
+  position: absolute;
+  top: 50%;
+  left: 4%;
+  transform: rotateY(-50%);
+}
 
+.banner-container .banner .content h3{
+  font-size: 3rem;
+  color: var(--black);
+}
+.banner-container .banner:hover img{
+  transform: scale(1.1)rotate(-2deg);
+}
+.banner-container .btn{
+  display: inline-block;
+  margin-top: 1rem;
+  background:#7fb825;
+  color: white;
+  padding:1px 1rem;
+  font-size: 1.7rem;
+  text-align: center;
+  cursor: pointer;
+}
+.banner-container .btn:hover{
+  background-color: #fff;
+  color: var(--green);
+  border: 1px solid #7fb825;
+}
+/* category */
+.category {
+  max-height: 100vh;
+  margin-bottom: 500px;
+}
+.category .box-container{
+  display: flex;
+  gap: 6rem;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+.category .box-container .box{
+  border: 1px solid black;
+  border-radius: .5rem;
+  text-align: center;
+  padding: 2rem;
+  flex: 0 1 25rem;
+}
+.category .box-container .box .btn{
+  display: inline-block;
+  margin-top: 1rem;
+  background:#7fb825;
+  color: white;
+  padding:1px 1rem;
+  font-size: 1.7rem;
+  text-align: center;
+  cursor: pointer;
+}
+.category .box-container .box .btn:hover{
+  background-color: #fff;
+  color: var(--green);
+  border: 1px solid #7fb825;
+}
 
-
-
-
+.category .box-container .box img{
+  width: 20rem;
+  margin: .5rem 0;
+}
+.category .box-container .box h3{
+ font-size: 1.8rem;
+ color: var(--black);  
+}
+.category .box-container .box p{
+  font-size: 1.2rem;
+  color:#666;
+  padding: 1rem 0;
+}
+.category .box-container .box .btn{
+  display: block;
+}
+.heading{
+  text-align: center;
+  color: var(--black);
+  text-transform:uppercase;
+  padding: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+.heading span{
+  color:#7fb825;
+  text-transform:uppercase;
+}

@@ -11,7 +11,7 @@ def shop(request):
   categorytitle={
           'Catagory':Catagory
   }
-  return render(request,'shop/shop.html',categorytitle)
+  return render(request,'shop/shop2.html',categorytitle)
 def log_in(request):
  if request.method=="POST":
 
