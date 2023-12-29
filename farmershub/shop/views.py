@@ -8,10 +8,15 @@ from django.contrib.auth import logout
 # Create your views here.
 def shop(request):
   Catagory=Categories.objects.all()
-  categorytitle={
-          'Catagory':Catagory
+  
+
+
+  banner=banner_area.objects.all()
+  context={
+    'banner':banner,
+    'Catagory':Catagory
   }
-  return render(request,'shop/shop2.html',categorytitle)
+  return render(request,'shop/shop2.html',context)
 def log_in(request):
  if request.method=="POST":
 
