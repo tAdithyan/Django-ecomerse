@@ -4,14 +4,26 @@ from.models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
+from django.conf import settings
+
+
+def my_view(request):
+    dark_mode = request.session.get(settings.DARK_MODE_SESSION_KEY, False)
+    return render(request, 'my_template.html', {'dark_mode': dark_mode})
 
 # Create your views here.
 def shop(request):
   Catagory=Categories.objects.all()
-  categorytitle={
-          'Catagory':Catagory
+  Latestproducts=latestProducts.objects.all()
+
+
+  banner=banner_area.objects.all()
+  context={
+    'banner':banner,
+    'Catagory':Catagory,
+    'Latestproducts':Latestproducts
   }
-  return render(request,'shop/shop.html',categorytitle)
+  return render(request,'shop/shop2.html',context)
 def log_in(request):
  if request.method=="POST":
 
@@ -47,3 +59,9 @@ def sign_up(request):
 def log_out(request):
     logout(request)
     return redirect("shop")
+
+
+# views.py
+
+
+
