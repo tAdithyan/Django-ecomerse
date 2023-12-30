@@ -131,3 +131,4 @@ MEDIA_URL = "/media/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # settings.py
+DARK_MODE_SESSION_KEY = 'dark_mode'
