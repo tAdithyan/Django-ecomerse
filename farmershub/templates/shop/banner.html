@@ -1,15 +1,31 @@
+{% load static %}
 <section class="home" id="home">
   <div class="image">
-    
-    <img
-      src="/static/images/shop/beans.png"
-      alt=""
-    />
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static 'images/shop/beans.png' %}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/shop/meat.png' %}"class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/shop/veg.png' %}"  width="400"class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true" style="display: none;"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true" style="display: none;"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
     
   </div>
   <div class="content">
     <span>Fresh and organic </span>
     <h2>Your Daily need products</h2>
-    <a href="#product" class="btn">get Started</a>
   </div>
 </section>

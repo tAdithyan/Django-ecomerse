@@ -6,10 +6,10 @@
       
    
     <div class="box" >
-      <h3>{{cate.categoryname}}</h3>
+      <h3>{{cate.name}}</h3>
       <!-- <p>up to {{cate.discount}} off</p> -->
       <img src="media/{{cate.image}}" alt="" />
-      <a href="#" class="btn">shop now</a>
+      <a href="{% url 'productsiteams' cate.slug %}" class="btn">shop now</a>
     </div>
     {% endfor %}
 

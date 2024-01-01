@@ -13,6 +13,7 @@
   text-decoration: none;
   text-transform:capitalize;
   transition: all .2s linear-;
+  user-select: none;
 }
 *::selection{
   background-color: var(--green);
@@ -247,16 +248,18 @@ section{
 .home .image{
   flex: 1 1 40rem;
   padding-top: 5rem;
+  height: 717px;
+  overflow: hidden;
   
 }
 
 .home .image img{
   width: 100%;
-
 }
 
 .home .content{
   flex: 1 1 40rem;
+  user-select: none;
 }
 .home .content span{
   font-size: 6rem;
@@ -429,7 +432,7 @@ max-width: 320px;
   position: absolute;
   top: 0rem;
   left: 0rem;
-  background-color:#7fb825;
+  background-color:#7fb825 ;
   color:whitesmoke;
   padding: 1rem -1rem;
   font-size: 2rem;
@@ -439,6 +442,7 @@ max-width: 320px;
   top: .5rem;
   right: 1rem;
   color: white;
+  background:none;
 }
 /* .product .box-container .box:hover .icons{
 right: 1rem;
@@ -481,6 +485,7 @@ right: 1rem;
   align-items: center;
   justify-content: center;
   padding-top: 1rem;
+text-decoration: none;
 
 }
 .product .box-container .box .quantity span{
