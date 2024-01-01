@@ -5,15 +5,13 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.conf import settings
+from django.contrib import messages
 
 
-def my_view(request):
-    dark_mode = request.session.get(settings.DARK_MODE_SESSION_KEY, False)
-    return render(request, 'my_template.html', {'dark_mode': dark_mode})
 
 # Create your views here.
 def shop(request):
-  Catagory=Categories.objects.all()
+  Catagory=Category.objects.all()
   Latestproducts=latestProducts.objects.all()
 
 
@@ -61,7 +59,32 @@ def log_out(request):
     return redirect("shop")
 
 
+
+def productsiteams(request,slug):
+  
+  if(Category.objects.filter( slug=slug)):
+    product=Product.objects.filter(category__slug=slug)
+    category_name=Category.objects.filter(slug=slug).first()
+   
+    context={
+           'product':product,
+            'category_name':category_name
+ }
+
+
+    return render(request,'shop/product.html',context)
+
+  else:
+      messages.warning(request,"no such category")
+      return redirect(shop)
+
 # views.py
+  
+# views.py
+
+# from django.shortcuts import render
+# from .models import Category, Product
+
 
 
 

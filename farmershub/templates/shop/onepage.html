@@ -1,0 +1,40 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+<body>
+  <div class="containers ">
+  <div class="wrapper ">
+    <div id="one ">
+     
+    </div>
+    <div id="two">
+      <div class="iteamimage">
+        <img src="media/{{productdetails.image.urls}}" alt="">
+
+
+      </div>
+    </div>
+    <div class="contentborder ">
+      <h1>{{productdetails.name}}</h1>
+      <p>{{productdetails.description}}</p>
+      <h4>REAL PRICE:<span class="real">${{productdetails.Oldprice}}</span><span class="disc"></span></h4>
+      <h3>DISCOUNT PRICE:${{productdetails.Currentprice}}</h3>
+      <button type="button" class="cartbutton">Add To Cart</button>
+    </div>
+</div>
+</div>
+
+  
+</body>
+</html>
+{% include "home/base.html" %}
+{% endblock content %}
