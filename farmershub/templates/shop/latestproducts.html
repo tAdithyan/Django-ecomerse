@@ -3,7 +3,7 @@
   <h1 class="heading">latest<span>Products</span></h1>
   <div class="box-container">
     
-  {% for latest in Latestproducts  %}
+  {% for latest in product|slice:":8"  %}
     
  
     
