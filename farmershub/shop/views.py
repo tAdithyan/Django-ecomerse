@@ -13,13 +13,16 @@ from django.contrib import messages
 def shop(request):
   Catagory=Category.objects.all()
   Latestproducts=latestProducts.objects.all()
+  product=Product.objects.all()
+
 
 
   banner=banner_area.objects.all()
   context={
     'banner':banner,
     'Catagory':Catagory,
-    'Latestproducts':Latestproducts
+    'Latestproducts':Latestproducts,
+     'product':product
   }
   return render(request,'shop/shop2.html',context)
 def log_in(request):
