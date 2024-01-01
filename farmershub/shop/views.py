@@ -78,13 +78,12 @@ def productsiteams(request,slug):
       messages.warning(request,"no such category")
       return redirect(shop)
 
-# views.py
-  
-# views.py
-
-# from django.shortcuts import render
-# from .models import Category, Product
-
+def products(request):
+   product=Product.objects.all()
+   productiteam={
+     'product':product
+   }
+   return render(request,'shop/Allproduct.html',productiteam)
 
 
 
