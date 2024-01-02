@@ -90,3 +90,7 @@ def products(request):
 
 
 
+def search(request):
+  q=request.GET['q']
+  product=Product.objects.filter(name__icontains=q).order_by('-id')
+  return render(request,'shop/search.html',{'product':product})
