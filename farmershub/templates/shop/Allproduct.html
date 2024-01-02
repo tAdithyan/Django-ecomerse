@@ -19,9 +19,17 @@
 
 
  
-    
+{% include "shop/header.html" %} 
+{% if request.GET.q %}
+  
+
+<h1 class="heading " ><span class="text-muted">Search result for  {{request.GET.q}}</span></h1>
+
+{% else %}
+<h1 class="heading"><span>ALL PRODUCTS</span></h1>
+{% endif %}
+
 <section class="product" id="product" name="product">
-  <h1 class="heading"><span>ALL PRODUCTS</span></h1>
   <div class="box-container">
 
     
