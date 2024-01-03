@@ -1,11 +1,11 @@
 {% load static %}
 <section class="category" id="category">
   <h1 class="heading">shop by<span>category</span></h1>
-  <div class="box-container">
+  <div class="box-container container">
     {% for cate in Catagory  %}
       
-   
-    <div class="box" >
+  
+    <div class="box card rounded-2"  >
       <h3>{{cate.name}}</h3>
       <!-- <p>up to {{cate.discount}} off</p> -->
       <img src="media/{{cate.image}}" alt="" />
