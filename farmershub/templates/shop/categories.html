@@ -8,7 +8,7 @@
     <div class="box card rounded-2"  >
       <h3>{{cate.name}}</h3>
       <!-- <p>up to {{cate.discount}} off</p> -->
-      <img src="media/{{cate.image}}" alt="" />
+      <img src="{{cate.image}}" alt="" />
       <a href="{% url 'productsiteams' cate.slug %}" class="btn">shop now</a>
     </div>
     {% endfor %}

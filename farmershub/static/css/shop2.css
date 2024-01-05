@@ -118,13 +118,14 @@ body::-webkit-scrollbar {
 }
 
 .navbar-nav a {
-  color: #000000;
+  color: #7fb825;
 }
 section{
   padding: 2rem 8%;
 }
 .header-1{
-  background-color: rgb(244, 243, 243);
+  /* background-color: rgb(244, 243, 243); */
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content:center;
@@ -502,8 +503,8 @@ text-decoration: none;
   font-size:1.5rem;
   font-weight: bolder;
   color: var(--black);
-  padding:.4rem;
   background: #0000.5;
+  width: 70px;
 
 }
 .product .box-container .box .btn{
