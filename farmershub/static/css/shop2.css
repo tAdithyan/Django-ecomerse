@@ -74,8 +74,17 @@ body::-webkit-scrollbar {
   height: 50px;
   width: 50px;
 }
-
-
+.dropdown .dropdown-toggle{
+  position: absolute;
+  bottom: 1px;
+  border: none;
+}
+.dropdown .option{
+  position: relative;
+  left: 145px;
+  border-radius: 30px;
+  text-align: center;
+}
 .nav-link {
   margin-left: 80px;
   justify-content: space-between;
@@ -87,9 +96,9 @@ body::-webkit-scrollbar {
 
 }
 
-/* .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
   color:#7fb825;
-} */
+}
 
 
 /* .navbar { */
@@ -120,6 +129,7 @@ body::-webkit-scrollbar {
 .navbar-nav a {
   color: #7fb825;
 }
+
 section{
   padding: 2rem 8%;
 }

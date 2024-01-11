@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth.decorators import user_passes_test
 
 
 
@@ -37,6 +38,7 @@ def log_in(request):
   
   if user is not None:
      login(request,user)
+   
   else:
      pass
   return redirect("shop")
@@ -55,8 +57,9 @@ def sign_up(request):
  
    user.save()
    return redirect(log_in)
-
+ 
   return render(request,'login_signup/signup/signup.html')
+  
 def log_out(request):
     logout(request)
     return redirect("shop")
@@ -91,10 +94,18 @@ def products(request):
 
 
 def search(request):
-  q=request.GET['q']
-  product=Product.objects.filter(name__icontains=q).order_by('-id')
-  if ( q==""):
+  query=request.GET['q']
+  if query:
+   product=Product.objects.filter(name__icontains=query).order_by('-id')
+ 
+  
+  
+  
+  if ( query==""):
           return redirect(shop)
 
 
+
   return render(request,'shop/Allproduct.html',{'product':product})
+def user_is_superuser(user):
+    return user.is_authenticated and user.is_superuser
