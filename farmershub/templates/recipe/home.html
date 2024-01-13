@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/recipy.css' %}">
+    <title>Recipe Shop</title>
+</head>
+<body>
+    <header>
+        <h1>Recipe Shop</h1>
+        <input type="text" id="search" placeholder="Search...">
+    </header>
+   
+    <section class="items">
+        {% for i in recipe %}
+          
+      
+        
+        <div class="{{i.title}}">
+            <img src="fish-curry.jpg" width="300" height="600" alt="Item 1">
+            <h2>Fish curry</h2>
+            <p>Description of Recipe 1.</p>
+            <span></span>
+            <a href="fish-curry.html">
+                <button>more</button>
+            </a>
+            
+        </div>
+        {% endfor %}
+       
+    
+    </section>
+   
+</body>
+</html>
