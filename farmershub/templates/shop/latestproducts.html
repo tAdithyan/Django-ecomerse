@@ -3,7 +3,7 @@
   <h1 class="heading">latest<span>Products</span></h1>
   <div class="box-container">
     
-  {% for latest in product|slice:":4"   %}
+    {% for latest in featured_products %}
     
  
     
@@ -15,7 +15,7 @@
         <!-- <a href="#" class="fas fa-share"></a>
         <a href="#" class="fas fa-heart"></a> -->
       </div>
-      <a href=""></a><img src="{{latest.image}}" alt="" />
+      <a href="{% url 'content' latest.id %}"><img src="{{latest.image}}" alt="" /></a>
       <h3>{{latest.name}}</h3>
       <p>{{latest.description}}</p>
       <!-- <div class="stars">
