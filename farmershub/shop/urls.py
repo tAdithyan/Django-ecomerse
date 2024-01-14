@@ -12,8 +12,10 @@ urlpatterns = [
     path('logout/',views.log_out,name='logout'),
     path('products/',views.products,name='products'),
     path('search/',views.search,name='search'),
+    path('content/<str:id>',views.content,name="content"),
 
     path('category/<str:slug>/', views.productsiteams, name='productsiteams'),
+    
 ]
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)
