@@ -38,10 +38,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            {% if user.is_authenticated and user.is_superuser %}
-            <a class="nav-link  " aria-current="page" href="{% url 'shop' %}"><i class="fa-solid fa-store"></i>user</a>
-
-            {% endif %}
+           
           
             <a class="nav-link active text-success " aria-current="page" href="{% url 'home' %}" name="home"><i
                 class="fa-solid fa-house-user "></i>Home</a>
