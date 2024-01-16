@@ -8,6 +8,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import user_passes_test
+from .forms import *
 
 
 
@@ -43,11 +44,12 @@ def log_in(request):
   
   if user is not None:
      login(request,user)
-     return redirect(shop)
+
+   
    
   else:
      pass
-  return render(request,'login_signup/login/login.html')
+  return redirect('shop')
  
  
 
@@ -138,3 +140,14 @@ def content(request,id):
   }
 
   return render(request,'shop/onepage.html',contexnt)
+
+def addproduct(request):
+   if request.method=='POST':
+       form=additeam(request.POST,request.FILES)
+       if form.is_valid():
+         form.save()
+         return redirect(shop)
+   else:  
+          form=additeam()
+   return render(request,'shop/addproduct.html',{'form':form})
+   

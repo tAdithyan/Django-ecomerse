@@ -21,10 +21,20 @@
     <header>
       <div class="header-1">
         <form action="{% url 'search' %}" class="search-box-container">
+      
           <input type="search" id="search-box" placeholder="search here..." name="q"/>
           <!-- <label for="search-box" class="fa-solid fa-magnifying-glass"></label> -->
         <button class="btn " type="submit" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
+        
         </form>
+       
+        {% if user.is_authenticated and user.is_superuser %}
+  
+       <a href="{% url 'addproduct' %}" class="addbtn">ADD PRODUCT</a>
+       
+
+       
+{% endif %}
+       
       </div>
-      
     </header>
