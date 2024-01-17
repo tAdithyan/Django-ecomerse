@@ -1,7 +1,9 @@
 {% load static %}
 <section class="category" id="category" >
- 
+
   <h1 class="heading">shop by<span>category</span></h1>
+  
+
   <div class="box-container container" >
     {% for cate in Catagory  %}
       
@@ -10,9 +12,16 @@
       <h3>{{cate.name}}</h3>
       <!-- <p>up to {{cate.discount}} off</p> -->
       <img src="{{cate.image}}" alt="" />
+      {% if user.is_authenticated and user.is_superuser %}
+      <a href="{% url 'editcategory' cate.id %}" class="btn">Edit category</a>
+      {% else %}
+    
+
       <a href="{% url 'productsiteams' cate.slug %}" class="btn">shop now</a>
+      {% endif %}
     </div>
     {% endfor %}
+    <a href="{% url 'addcategory' %}" class="btncategory">ADD CATEGORY</a>
 
     
     

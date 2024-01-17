@@ -15,7 +15,14 @@ urlpatterns = [
     path('content/<str:id>',views.content,name="content"),
 
     path('category/<str:slug>/', views.productsiteams, name='productsiteams'),
-    path('addproduct/',views.addproduct,name='addproduct')
+    path('addproduct/',views.addproduct,name='addproduct'),
+    path('editproduct/<int:id>',views.editproduct,name='editproduct'),
+    path('addcategory/',views.addcategoryiteam,name='addcategory'),
+    path('editcategory/<int:id>',views.editcategory,name='editcategory'),
+
+
+    path('editproduct/<int:id>',views.editproduct,name='editproduct')
+
     
 ]
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

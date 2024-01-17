@@ -102,6 +102,11 @@ def productsiteams(request,slug):
 
 def products(request):
    product=Product.objects.all()
+  
+
+           
+
+      
    productiteam={
      'product':product
    }
@@ -138,7 +143,13 @@ def content(request,id):
   contexnt={
                'blog':blog
   }
+ 
 
+            
+
+    
+     
+  
   return render(request,'shop/onepage.html',contexnt)
 
 def addproduct(request):
@@ -150,4 +161,45 @@ def addproduct(request):
    else:  
           form=additeam()
    return render(request,'shop/addproduct.html',{'form':form})
+def editproduct(request,id):
+     
+      blog=Product.objects.get(id=id)
+  
+      if request.method=='POST':
+       form=additeam(request.POST,instance=blog)
+       if form.is_valid():
+           form.save()
+           return redirect(products)
+      else:
+          form=additeam(instance=blog)
+
+
+
+      return render(request,'shop/addproduct.html',{'form':form})
+def addcategoryiteam(request):
+     if request.method=='POST':
+         form=addcategory(request.POST,request.FILES)
+         if form.is_valid():
+          form.save()
+          return redirect(shop)
+     else:  
+            form=addcategory()
+     return render(request,'shop/addproduct.html',{'form':form})
+
+def editcategory(request,id):
+     
+      blog=Category.objects.get(id=id)
+  
+      if request.method=='POST':
+       form=addcategory(request.POST,instance=blog)
+       if form.is_valid():
+           form.save()
+           return redirect(shop)
+      else:
+          form=addcategory(instance=blog)
+
+
+
+      return render(request,'shop/addproduct.html',{'form':form})    
+
    
