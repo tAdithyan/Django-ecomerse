@@ -31,6 +31,7 @@ class Product(models.Model):
         return self.name
 class Profile(models.Model):
         user=models.OneToOneField(User,null=True,on_delete=models.CASCADE)
+        username=models.CharField(null=True,max_length=225)
         bio=models.TextField()
         image=models.ImageField(upload_to='newproducts', null=True)
 

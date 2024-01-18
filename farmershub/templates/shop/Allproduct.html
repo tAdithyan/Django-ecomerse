@@ -68,7 +68,7 @@
       {% if user.is_authenticated and user.is_superuser %}
   
       <a href="{% url 'editproduct'  iteam.id %}" class="btn">Edit</a>
-      <a href="#" class="btn">Delete</a>
+      <a href="{% url 'deleteproduct' iteam.id %}" class="btn">Delete</a>
       {% else %}
       <a href="#" class="btn">Add to cart</a>
 

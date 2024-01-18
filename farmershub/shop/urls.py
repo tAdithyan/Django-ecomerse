@@ -17,11 +17,16 @@ urlpatterns = [
     path('category/<str:slug>/', views.productsiteams, name='productsiteams'),
     path('addproduct/',views.addproduct,name='addproduct'),
     path('editproduct/<int:id>',views.editproduct,name='editproduct'),
+    path('deleteproduct/<int:id>',views.deleteproduct,name='deleteproduct'),
+
+
     path('addcategory/',views.addcategoryiteam,name='addcategory'),
     path('editcategory/<int:id>',views.editcategory,name='editcategory'),
+    path('deletecategory/<int:id>',views.deletecategory,name='deletecategory'),
 
 
-    path('editproduct/<int:id>',views.editproduct,name='editproduct')
+
+    path('editproduct/<int:id>',views.editproduct,name='editproduct'),
 
     
 ]

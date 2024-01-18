@@ -9,6 +9,8 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import user_passes_test
 from .forms import *
+from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
 
 
 
@@ -44,6 +46,7 @@ def log_in(request):
   
   if user is not None:
      login(request,user)
+    
 
    
    
@@ -54,7 +57,6 @@ def log_in(request):
  
 
  return render(request,'login_signup/login/login.html')
-
 
 
 
@@ -201,5 +203,16 @@ def editcategory(request,id):
 
 
       return render(request,'shop/addproduct.html',{'form':form})    
+def deleteproduct(request,id):
+         blog=Product.objects.get(id=id)
+         if request.method=='POST':
+          blog.delete()
+          return redirect(products)
+         return render(request,'shop/delete.html',{'blog':blog})
+def deletecategory(request,id):
+         blog=Category.objects.get(id=id)
+         if request.method=='POST':
+          blog.delete()
+          return redirect(shop)
+         return render(request,'shop/delete.html',{'blog':blog})
 
-   

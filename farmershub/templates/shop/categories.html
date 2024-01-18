@@ -12,16 +12,23 @@
       <h3>{{cate.name}}</h3>
       <!-- <p>up to {{cate.discount}} off</p> -->
       <img src="{{cate.image}}" alt="" />
+     
       {% if user.is_authenticated and user.is_superuser %}
       <a href="{% url 'editcategory' cate.id %}" class="btn">Edit category</a>
-      {% else %}
+      <a href="{% url 'deletecategory' cate.id %}" class="btn">Delete category</a>
+
+
+      {% endif %}
     
 
-      <a href="{% url 'productsiteams' cate.slug %}" class="btn">shop now</a>
-      {% endif %}
+      <a href="{% url 'productsiteams' cate.slug %}" class="btn">View Iteams</a>
+      
     </div>
     {% endfor %}
+    {% if user.is_authenticated and user.is_superuser %}
+
     <a href="{% url 'addcategory' %}" class="btncategory">ADD CATEGORY</a>
+    {% endif %}
 
     
     
