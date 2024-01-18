@@ -2,6 +2,7 @@
 <section class="product" id="product" name="product">
   <h1 class="heading">latest<span>Products</span></h1>
   <div class="box-container">
+   
     
     {% for latest in featured_products %}
     
@@ -34,8 +35,17 @@
     </div>
       <!-- <a href="#" class="btn">Add to cart</a> -->
       <!-- <a href="#" class="btn">Add to cart</a> -->
+      {% if user.is_authenticated and user.is_superuser %}
+  
+      <a href="{% url 'editproduct'  latest.id %}" class="btn">Edit</a>
+      <a href="{% url 'deleteproduct' latest.id %}" class="btn">Delete</a>
+      {% else %}
       <a href="#" class="btn">Add to cart</a>
 
+
+      
+       {% endif %}
+     
     </div>
     
     {% endfor %}  

@@ -9,6 +9,8 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import user_passes_test
 from .forms import *
+from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
 
 
 
@@ -44,6 +46,7 @@ def log_in(request):
   
   if user is not None:
      login(request,user)
+    
 
    
    
@@ -54,7 +57,6 @@ def log_in(request):
  
 
  return render(request,'login_signup/login/login.html')
-
 
 
 
@@ -102,6 +104,11 @@ def productsiteams(request,slug):
 
 def products(request):
    product=Product.objects.all()
+  
+
+           
+
+      
    productiteam={
      'product':product
    }
@@ -138,7 +145,13 @@ def content(request,id):
   contexnt={
                'blog':blog
   }
+ 
 
+            
+
+    
+     
+  
   return render(request,'shop/onepage.html',contexnt)
 
 def addproduct(request):
@@ -150,4 +163,56 @@ def addproduct(request):
    else:  
           form=additeam()
    return render(request,'shop/addproduct.html',{'form':form})
-   
+def editproduct(request,id):
+     
+      blog=Product.objects.get(id=id)
+  
+      if request.method=='POST':
+       form=additeam(request.POST,instance=blog)
+       if form.is_valid():
+           form.save()
+           return redirect(products)
+      else:
+          form=additeam(instance=blog)
+
+
+
+      return render(request,'shop/addproduct.html',{'form':form})
+def addcategoryiteam(request):
+     if request.method=='POST':
+         form=addcategory(request.POST,request.FILES)
+         if form.is_valid():
+          form.save()
+          return redirect(shop)
+     else:  
+            form=addcategory()
+     return render(request,'shop/addproduct.html',{'form':form})
+
+def editcategory(request,id):
+     
+      blog=Category.objects.get(id=id)
+  
+      if request.method=='POST':
+       form=addcategory(request.POST,instance=blog)
+       if form.is_valid():
+           form.save()
+           return redirect(shop)
+      else:
+          form=addcategory(instance=blog)
+
+
+
+      return render(request,'shop/addproduct.html',{'form':form})    
+def deleteproduct(request,id):
+         blog=Product.objects.get(id=id)
+         if request.method=='POST':
+          blog.delete()
+          return redirect(products)
+         return render(request,'shop/delete.html',{'blog':blog})
+def deletecategory(request,id):
+         blog=Category.objects.get(id=id)
+         if request.method=='POST':
+          blog.delete()
+          return redirect(shop)
+         return render(request,'shop/delete.html',{'blog':blog})
+
