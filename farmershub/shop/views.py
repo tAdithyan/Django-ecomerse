@@ -10,7 +10,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import user_passes_test
 from .forms import *
 from django.contrib.auth.views import LoginView
-from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 
 
 
@@ -215,4 +216,5 @@ def deletecategory(request,id):
           blog.delete()
           return redirect(shop)
          return render(request,'shop/delete.html',{'blog':blog})
-
+def cart(request):
+   return render(request,'cart/cart.html')
