@@ -7,15 +7,21 @@
 <!doctype html>
 <title>Example</title>
 <style>
+  *{
+    user-select: none;
+  }
 .grid { 
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 20px;
+  grid-template-columns: 300px 300px 300px 300px;
+  grid-gap: 60px;
   align-items: center;
-  height: 100vh;
+  margin-top: 70px;
+  justify-content: center;
+  min-height: 80vh;
+  margin-bottom: 60px;
+  background-image:linear-gradient(TO right, #7fb825, rgb(198, 198, 198));
   }
 .grid > article {
-  border: 1px solid #ccc;
   box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
 }
 .grid > article img {
@@ -31,59 +37,91 @@
   padding: 10px;
   width: 100%;
   }
+   /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back  {
+  color:#ffffff;
+  transform: rotateY(180deg);
+  font-weight: 800;
+ 
+  
+  
+} 
+.flip-card-front .Avatar{
+  filter: brightness(70%);
+}
+
 </style>
 <body>
   
+<div class="containner">
+
 
 <main class="grid">
-  <article>
-    <img src="/pix/samples/23m.jpg" alt="Sample photo">
-    <div class="text">
-      <h3>Seamlessly visualize quality</h3>
-      <p>Collaboratively administrate empowered markets via plug-and-play networks.</p>
-      <button>Here's why</button>
+  {% for rec in recipe %}
+
+ 
+
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        
+        <img src="/recipe/{{rec.image}}" alt="Avatar" max-height="200px" width="100%" class="Avatar">
+        
+      </div>
+      <div class="flip-card-back">
+
+        <h1>{{rec.title}}</h1>
+        <p>Architect & Engineer</p>
+        <p>We love that guy</p>
+        <button>VIEW RECIPE</button>
+      </div>
     </div>
-  </article>
-  <article>
-    <img src="/pix/samples/24m.jpg" alt="Sample photo">
-    <div class="text">
-      <h3>Completely Synergize</h3>
-      <p>Dramatically engage seamlessly visualize quality intellectual capital without superior collaboration and idea-sharing.</p>
-      <button>Here's how</button>
-    </div>
-  </article>
-  <article>
-    <img src="/pix/samples/22l.jpg" alt="Sample photo">
-    <div class="text">
-      <h3>Dynamically Procrastinate</h3>
-      <p>Completely synergize resource taxing relationships via premier niche markets.</p>
-      <button>Read more</button>
-    </div>
-  </article>
-  <article>
-    <img src="/pix/samples/15l.jpg" alt="Sample photo">
-    <div class="text">
-      <h3>Best in class</h3>
-      <p>Imagine jumping into that boat, and just letting it sail wherever the wind takes you...</p>
-      <button>Just do it...</button>
-    </div>
-  </article>
-  <article>
-    <img src="/pix/samples/25m.jpg" alt="Sample photo">
-    <div class="text">
-      <h3>Dynamically innovate supply chains</h3>
-      <p>Holisticly predominate extensible testing procedures for reliable supply chains.</p>
-      <button>Here's why</button>
-    </div>
-  </article>
-  <article>
-    <img src="/pix/samples/16l.jpg" alt="Sample photo">
-    <div class="text">
-      <h3>Sanity check</h3>
-      <p>Objectively innovate empowered manufactured products whereas parallel platforms.</p>
-      <button>Stop here</button>
-    </div>
-  </article>
+  </div> 
+  {% endfor %}
+ 
+ 
+  
+  
+  
 </main>
+</div>
 </body>
 {% endblock content %}

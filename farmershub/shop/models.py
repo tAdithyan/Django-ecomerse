@@ -37,3 +37,21 @@ class Profile(models.Model):
 
         def __str__(self):
             return str(self.user)
+        
+class CartItem(models.Model):
+    cart = models.ForeignKey('Cart', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.quantity} x {self.product.name}"
+
+class Cart(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    products = models.ManyToManyField(Product, through='CartItem')
+
+    def __str__(self):
+        return f"Cart for {self.user.username}"
+
+User.profile = property(lambda u: Profile.objects.get_or_create(user=u)[0])
+User.cart = property(lambda u: Cart.objects.get_or_create(user=u)[0])
