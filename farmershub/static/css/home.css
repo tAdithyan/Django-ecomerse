@@ -635,7 +635,7 @@ body::-webkit-scrollbar {
 }
 
 .review {
-  height: 85vh;
+ min-height: 85vh;
   width: 100%;
   /* border: 1px solid red; */
   background-image: linear-gradient(TO right, #7fb825, rgb(198, 198, 198));

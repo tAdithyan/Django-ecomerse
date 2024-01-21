@@ -425,7 +425,6 @@ gap: 1.5rem;
     flex-wrap: wrap;
 }
 .category{
-  max-height: 100vh;
   margin-bottom: 100px;
 }
 .category .box-container{
@@ -726,3 +725,38 @@ text-decoration: none;
  .newsletter form .btn{
   margin-top: 0;
  }
+.forms{
+  align-items: center;
+  display: flex;
+  line-height: 30px;
+  gap: 30px;
+  justify-content: center;
+}
+.input{
+  width: 60pc;
+}
+ 
+.product_name{
+  padding:30px;
+  height: 10px;
+  height: 50px;
+
+  margin-left: 0px;
+}
+.description{
+  height: 200px;
+  overflow: scroll;
+
+}
+.oldprice{
+  padding:25px;
+  height: 10px;
+  margin-left: 1px;
+  width: 100%;
+}
+.Discount{
+  padding:25px;
+  height: 10px;
+  margin-left: 1px;
+  width: 60pc;
+}
