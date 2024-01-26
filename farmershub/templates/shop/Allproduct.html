@@ -67,8 +67,8 @@
     </div>
       {% if user.is_authenticated and user.is_superuser %}
   
-      <a href="{% url 'editproduct'  iteam.id %}" class="btn">Edit</a>
-      <a href="{% url 'deleteproduct' iteam.id %}" class="btn">Delete</a>
+      <a href="{% url 'editproduct'  iteam.id %}" class="btn"><i class="fa-solid fa-pen-to-square"></i></a>
+      <a href="{% url 'deleteproduct' iteam.id %}" class="btn"><i class="fa-solid fa-trash"></i></a>
       {% else %}
       <a href="#" class="btn">ADD TO CART</a>
 
@@ -83,5 +83,6 @@
   </div>
 </section>
 {% include "home/base.html" %}
+
 {% endblock content %}
 

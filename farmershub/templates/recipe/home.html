@@ -15,10 +15,10 @@
   grid-template-columns: 300px 300px 300px 300px;
   grid-gap: 60px;
   align-items: center;
-  margin-top: 70px;
+  
   justify-content: center;
   min-height: 80vh;
-  margin-bottom: 60px;
+  
   background-image:linear-gradient(TO right, #7fb825, rgb(198, 198, 198));
   }
 .grid > article {
@@ -75,36 +75,85 @@
   color: black;
 }
 
+
 /* Style the back side */
 .flip-card-back  {
   color:#ffffff;
   transform: rotateY(180deg);
   font-weight: 800;
+  background-color: #7fb825;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction:column;
  
   
   
 } 
 .flip-card-front .Avatar{
-  filter: brightness(70%);
+  filter: brightness(100%);
+  height: 200px;
+  width: 100%;
 }
 .containner{
   margin-top: 85px;
-  border: 1px solid red;
+  
 }
-.search{
-border: 1px solid red;
-}
+
 .header-1{
   width: 100%;
   justify-content: center;
   display: flex;
   align-items: center;
   padding: 20px;
+  background-color: #7fb825;
+  border: 2px solid white;
+}
+.header-1 a{
+  
+  text-decoration: none;
+  color: #ffffff;
 }
 #search-box{
   width: 1000px;
-  padding: 8px;
+  padding:12px;
+  border-radius: 20px;
+  border: none;
 }
+#button-addon2{
+  height: 50px;
+  width: 50px;
+  border-radius: 30px;
+  background-color: #7fb825;
+  border: 2px double white;
+}
+#button-addon2:hover{
+  color: #7fb825;
+  background-color: white;
+}
+.addbtn{
+  margin-left: 70px;
+  height: 50px;
+  width: 140px;
+  border: 3px dotted #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+ 
+}
+.addbtn:hover{
+  color: #7fb825;
+  background-color: white;
+}
+.recipetitle{
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+}
+
 
 </style>
 <body>
@@ -125,7 +174,7 @@ border: 1px solid red;
      
       {% if user.is_authenticated and user.is_superuser %}
 
-     <a href="{% url 'addproduct' %}" class="addbtn">ADD PRODUCT</a>
+     <a href="{% url 'addrecipe' %}" class="addbtn"><i class="fa-solid fa-plus"></i></a>
      
 
      
@@ -142,18 +191,31 @@ border: 1px solid red;
  
 
   <div class="flip-card">
+    <h3 class="recipetitle">{{rec.title}}</h3>
+
     <div class="flip-card-inner">
       <div class="flip-card-front">
         
-        <img src="/recipe/{{rec.image}}" alt="Avatar" max-height="200px" width="100%" class="Avatar">
+        <img src="/recipe/{{rec.image}}" alt="Avatar"  class="Avatar">
         
       </div>
       <div class="flip-card-back">
 
-        <h1>{{rec.title}}</h1>
+       
         <p>Architect & Engineer</p>
         <p>We love that guy</p>
-        <button><a href="{% url 'content' rec.id %}">VIEW RECIPE</a></button>
+        {% if user.is_authenticated and user.is_superuser %}
+
+        <a href="{% url 'editrecipes' rec.id %}" class="addbtn"><i class="fa-solid fa-pen-to-square"></i></a>
+        <a href="{% url 'deletrecipes' rec.id %}" class="addbtn"><i class="fa-solid fa-trash"></i></a>
+        <a href="{% url 'content' rec.id %}" class="addbtn"><i class="fa-solid fa-eye"></i></a>
+
+
+        {% else %}
+        <a href="{% url 'content' rec.id %}" class="addbtn">VIEW RECIPE</a>
+        
+   {% endif %}
+     
       </div>
     </div>
   </div> 
@@ -165,5 +227,8 @@ border: 1px solid red;
   
 </main>
 </div>
+<script>
+ 
+</script>
 </body>
 {% endblock content %}

@@ -204,14 +204,20 @@ def editcategory(request,id):
 
 
       return render(request,'shop/addproduct.html',{'form':form})    
-def deleteproduct(request,id):
-         blog=Product.objects.get(id=id)
-         if request.method=='POST':
-          blog.delete()
-          return redirect(products)
-         return render(request,'shop/delete.html',{'blog':blog})
+# def deleteproduct(request,id):
+#          blog=Product.objects.get(id=id)
+#          if request.method=='POST':
+#           blog.delete()
+#           return redirect(products)
+#          return render(request,'shop/delete.html',{'blog':blog})
 def deletecategory(request,id):
          blog=Category.objects.get(id=id)
+         if request.method=='POST':
+          blog.delete()
+          return redirect(shop)
+         return render(request,'shop/delete.html',{'blog':blog})
+def deleteproduct(request,id):
+         blog=Product.objects.get(id=id)
          if request.method=='POST':
           blog.delete()
           return redirect(shop)
