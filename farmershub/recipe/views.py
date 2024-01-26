@@ -10,3 +10,16 @@ def recipe(request):
     "incredient":incredient
   }
   return render(request,'recipe/home.html',context)
+def content(request,id):
+  blog=Recipe.objects.get(id=id)
+  contexnt={
+               'blog':blog
+  }
+ 
+
+            
+
+    
+     
+  
+  return render(request,'recipe/recipeiteam.html',contexnt)
