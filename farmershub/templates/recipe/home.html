@@ -87,11 +87,53 @@
 .flip-card-front .Avatar{
   filter: brightness(70%);
 }
+.containner{
+  margin-top: 85px;
+  border: 1px solid red;
+}
+.search{
+border: 1px solid red;
+}
+.header-1{
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+#search-box{
+  width: 1000px;
+  padding: 8px;
+}
 
 </style>
 <body>
   
 <div class="containner">
+  <div class="search">
+    <div class="header-1">
+
+
+
+      <form action="{% url 'search' %}" class="search-box-container">
+    
+        <input type="search" id="search-box" placeholder="search here..." name="q"/>
+        <!-- <label for="search-box" class="fa-solid fa-magnifying-glass"></label> -->
+      <button class="btn " type="submit" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
+      
+      </form>
+     
+      {% if user.is_authenticated and user.is_superuser %}
+
+     <a href="{% url 'addproduct' %}" class="addbtn">ADD PRODUCT</a>
+     
+
+     
+{% endif %}
+     
+    </div>
+
+  </div>
 
 
 <main class="grid">
