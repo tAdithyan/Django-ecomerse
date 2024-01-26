@@ -1,0 +1,46 @@
+{% extends 'home/base.html' %}
+{% block content %}
+{% include "home/header.html" %}
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/recipy.css">
+    <title>Recipe E-Commerce</title>
+</head>
+<body>
+
+   
+    <section class="product">
+        <h1 class="productname ">{{blog.title}} Recipe</h1>
+        <img src="/recipe/{{blog.image}}" alt="Product Image" >
+        
+       
+           <h3>INSTRUCTIONS</h3>
+ 
+         {{blog.description}}
+           
+       
+
+        <h3>INGREDIENTS</h3>
+        
+          
+            
+          
+           {{blog.ingredients }}
+
+           
+   
+        <!-- <div id="b">
+            <img src="/shop/{{Products.image}}" alt="Product Image">
+        </div> -->
+        <!-- <button>Add to Cart</button> -->
+    </section>
+
+    
+
+</body>
+</html>
+{% endblock content %}

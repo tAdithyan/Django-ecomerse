@@ -1,0 +1,72 @@
+{% extends "shop/base.html" %} 
+{% load static %}
+{% block content %} 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+
+
+
+
+ 
+{% include "shop/header.html" %} 
+
+{% if request.GET.q %}
+  
+
+<h1 class="heading " ><span class="text-muted">Search result for  {{request.GET.q}}</span></h1>
+
+{% else %}
+<h1 class="heading"><span>ALL PRODUCTS</span></h1>
+
+{% endif %}
+
+<section class="product" id="product" name="product">
+  <div class="box-container">
+
+    
+ 
+    {% for iteam in product %}
+      
+  
+    <div class="box">
+      
+      <a href="{% url 'content' iteam.id %}"><img src="/shop/{{iteam.image}}" alt="" /></a>
+    
+      <h3>{{iteam.title}}</h3>
+        <!-- <p>{{iteam.description}}</p> -->
+     
+        {% if user.is_authenticated and user.is_superuser %}
+  
+      <a href="{% url 'editproduct'  iteam.id %}" class="btn">Edit</a>
+      <a href="{% url 'deleteproduct' iteam.id %}" class="btn">Delete</a>
+      {% else %}
+      <a href="#" class="btn">ADD TO CART</a>
+
+      
+       {% endif %}
+        
+     
+    </div>
+      
+     
+      
+
+    </div>
+    {% endfor %}  
+
+  </div>
+</section>
+{% include "home/base.html" %}
+{% endblock content %}
+

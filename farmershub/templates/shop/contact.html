@@ -1,0 +1,21 @@
+<section class="contact" id="contact">
+  <h1 class="heading"><span>contact</span> us</h1>
+  <form  method="post">
+    {% csrf_token %}
+    <div class="inputbox">
+    <input type="text" placeholder="name" name="name">
+    <input type="email" placeholder="email" name="email">
+
+  </div>
+
+
+  <div class="inputbox">
+    <input type="number" placeholder="number" name="phone">
+    <input type="text" placeholder="subject" name="subject">
+
+  </div>
+ <input type="text" name="messege">
+  <textarea name="messege" id="" cols="30" rows="10" placeholder="messege" ></textarea>
+  <input type="submit" value="send messege" class="btn" >
+  </form>
+ </section>
