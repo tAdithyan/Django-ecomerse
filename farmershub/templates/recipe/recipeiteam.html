@@ -1,0 +1,206 @@
+{% extends 'home/base.html' %}
+{% block content %}
+{% include "home/header.html" %}
+  
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Blog</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500&family=Montserrat:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+
+:root{
+    --bgc-bullet: #F2994A;
+    --font-main: 'Montserrat', sans-serif;
+    --font-head: 'IBM Plex Serif', serif;
+    --bgc-checkbox: #760c1c;
+}
+body{
+   margin: 0;
+   padding: 0;
+   font-family: var(--font-main);
+   background-color: cornsilk;
+}
+
+h1{
+    font-family: var(--font-head);
+    font-size: 3rem;
+    line-height: 3.5rem;
+}
+
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+    margin-top:100px;
+}
+
+img{
+    max-width: 100%;
+    box-shadow: 0px 0px 20px var(--bgc-bullet);
+  margin: 1rem 0;
+}
+
+input[type='checkbox'] {
+    -webkit-appearance:none;
+    width:25px;
+    height:25px;
+    border-radius:50%;
+    border:2px solid #555;
+}
+input[type='checkbox']:checked {
+    background: var(--bgc-checkbox);
+}
+
+label,p{
+    line-height: 1.5rem;
+
+}
+
+.sidebar{
+    display: none;
+}
+/* ---------------------------Instructions--------------------------------- */
+ ol {
+   list-style: none;
+   counter-reset: item;
+ }
+ li {
+   counter-increment: item;
+   margin: 0 0 2em 1em;
+ }
+ li:before {
+   margin-right: 3em;
+   content: counter(item);
+   background: var(--bgc-bullet);
+   border-radius: 100%;
+   color: white;
+   width: 2em;
+   height: 2em;
+   border-radius: 10px;
+   position: absolute;
+   left: 5em;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+
+p{
+  display: inline;
+  
+}
+@media (min-width:700px) {
+    body{
+        font-size: 1.25rem;
+    }
+    
+    .container{
+        width: 80%;
+    }
+    .section-1 p,
+    .section-2-content,
+    .section-3{
+        width: 60%;
+    }
+
+    .section-2{
+        padding: 1.5em 0;
+        display: flex;
+        justify-content: space-between;
+    }
+   
+    .sidebar{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 2em;
+        height: 50vh;
+        box-shadow: 0px 0px 20px var(--bgc-bullet);
+        border-radius: 12px;
+        background-color: var(--bgc-checkbox);
+        color: white;
+        font-weight: bold;
+    }
+    .sidebar p{
+        margin: 0;
+        font-size: 1rem;
+    }
+    .sidebar div{
+        padding: 1.5em ;
+        font-size: .75rem;
+    }
+}
+
+
+</style>
+</head>
+<body>
+  <main class="container">
+      <header class="section-1">
+          <h1>{{blog.title}}</h1>
+          <p>{{blog.description}}</p>
+          <div class="hero-img"><img src="/recipe/{{blog.image}}"  alt="{{blog.title}}"></div>
+      </header>
+      <section class="section-2 ingredients">
+        <div class="section-2-content">
+            <h2>Ingredients</h2>
+          <form class="form-1" action="#"><h3></h3>
+            <br>
+            <ul>
+              
+            <label for="done-1"><strong>{{ blog.ingredients|linebreaks }} </strong></label>
+          </ul>
+           
+          
+          </form>
+          
+         
+        </div>
+          <aside class="sidebar">
+           
+            <div>
+                <span class="material-icons material-symbols-outlined">schedule</span> 
+               <span>PREP TIME</span>
+               <p>{{blog.prep_time}} mins</p>
+            </div>
+            <div>
+                <span class="material-icons material-symbols-outlined">schedule</span> 
+               <span>COOK TIME</span>
+               <p>{{blog.cook_time }} mins</p>
+            </div>
+          
+           </aside>
+       </section>
+    
+       <section class="section-3 instructions">
+        <h2>Instructions</h2>
+           
+           
+                <p>{{blog.instructions}}</p>
+           
+           
+            
+            
+               
+           
+       
+       </section>
+   </main>
+</body>
+</html>
+
+{% endblock content %}
