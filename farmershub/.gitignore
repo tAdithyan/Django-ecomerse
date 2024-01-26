@@ -1,0 +1,28 @@
+# Byte-compiled / optimized Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Database files
+db.sqlite3
+
+# Static files (usually collected by Django's collectstatic)
+/static/
+
+# Media files
+/media/
+
+# Virtual environment
+venv/
+.env/
+
+# Development-specific settings
+local_settings.py
+
+# IDE settings
+.vscode/
+.idea/
+
+# Ignore migrations, as they are usually auto-generated
+*/migrations/
