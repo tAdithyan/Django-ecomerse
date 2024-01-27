@@ -153,6 +153,9 @@
   color: white;
   text-transform: uppercase;
 }
+.heading{
+  text-align: center;
+}
 
 
 </style>
@@ -161,10 +164,11 @@
 <div class="containner">
   <div class="search">
     <div class="header-1">
+      
 
 
 
-      <form action="{% url 'search' %}" class="search-box-container">
+      <form action="{% url 'searchRecipe' %}" class="search-box-container">
     
         <input type="search" id="search-box" placeholder="search here..." name="q"/>
         <!-- <label for="search-box" class="fa-solid fa-magnifying-glass"></label> -->
@@ -184,6 +188,15 @@
 
   </div>
 
+  {% if request.GET.q %}
+  
+
+  <h1 class="heading " ><span class="text-muted">Search result for  {{request.GET.q}}</span></h1>
+  
+  {% else %}
+  <h1 class="heading"><span>ALL PRODUCTS</span></h1>
+  
+  {% endif %}
 
 <main class="grid">
   {% for rec in recipe %}
@@ -202,8 +215,8 @@
       <div class="flip-card-back">
 
        
-        <p>Architect & Engineer</p>
-        <p>We love that guy</p>
+        <p>{{rec.description}}</p>
+       
         {% if user.is_authenticated and user.is_superuser %}
 
         <a href="{% url 'editrecipes' rec.id %}" class="addbtn"><i class="fa-solid fa-pen-to-square"></i></a>
