@@ -8,9 +8,9 @@ urlpatterns = [
    
     path('',views.recipe,name='recipe'),
     path('content/<int:id>',views.content,name="content"),
-    path('search/',views.search,name='search'),
+    path('search/',views.searchRecipe,name='searchRecipe'),
     path('addrecipe/',views.addrecipe,name='addrecipe'),
-    path('editrecipes/<int:id>',views.editrecipes,name='editrecipes'),
+    path('editrecipes/<str:id>',views.editrecipes,name='editrecipes'),
     path('deleterecipe/<int:id>',views.deleterecipes,name='deletrecipes'),
 
 
