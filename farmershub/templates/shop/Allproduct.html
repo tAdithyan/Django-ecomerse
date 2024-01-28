@@ -19,9 +19,19 @@
 
 
  
-    
+{% include "shop/header.html" %} 
+
+{% if request.GET.q %}
+  
+
+<h1 class="heading " ><span class="text-muted">Search result for  {{request.GET.q}}</span></h1>
+
+{% else %}
+<h1 class="heading"><span>ALL PRODUCTS</span></h1>
+
+{% endif %}
+
 <section class="product" id="product" name="product">
-  <h1 class="heading"><span>ALL PRODUCTS</span></h1>
   <div class="box-container">
 
     
@@ -38,7 +48,9 @@
        
       </div>
       {% endif %}
-      <a href=""></a><img src="#" alt="" />
+    
+      <a href="{% url 'iteamcontent' iteam.id %}"><img src="/shop/{{iteam.image}}" alt="" /></a>
+    
       <h3>{{iteam.name}}</h3>
       <p>{{iteam.description}}</p>
      
@@ -53,12 +65,24 @@
       <input type="number" min="1" max="1000" value="1" />
       <span>/Kg</span>
     </div>
-      <a href="#" class="btn">Add to cart</a>
+      {% if user.is_authenticated and user.is_superuser %}
+  
+      <a href="{% url 'editproduct'  iteam.id %}" class="btn"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+      <a href="{% url 'deleteproduct' iteam.id %}" class="btn"><i class="fa-solid fa-trash"></i>Delete</a>
+      {% else %}
+      <a href="#" class="btn">ADD TO CART</a>
+
+      
+       {% endif %}
+     
+      
+
     </div>
     {% endfor %}  
 
   </div>
 </section>
 {% include "home/base.html" %}
+
 {% endblock content %}
 

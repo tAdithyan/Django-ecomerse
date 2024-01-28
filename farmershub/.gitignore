@@ -1,0 +1,31 @@
+# .gitignore
+
+# Ignore virtual environment
+venv/
+
+# Ignore database files
+db.sqlite3
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+
+# Ignore settings files with sensitive information
+*.env
+
+# Ignore local development settings
+project_name/settings/local.py
+
+# Ignore media files
+media/
+
+# Ignore logs
+logs/
+
+# Ignore temporary files
+*.log
+*.swp
+
+# Ignore environment-specific files
+.env
+*.DS_Store

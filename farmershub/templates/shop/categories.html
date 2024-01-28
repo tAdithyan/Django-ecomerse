@@ -1,17 +1,36 @@
 {% load static %}
-<section class="category" id="category">
+<section class="category" id="category" >
+
   <h1 class="heading">shop by<span>category</span></h1>
-  <div class="box-container">
+  
+
+  <div class="box-container container" >
     {% for cate in Catagory  %}
       
-   
-    <div class="box" >
+  
+    <div class="box card rounded-2"  >
       <h3>{{cate.name}}</h3>
       <!-- <p>up to {{cate.discount}} off</p> -->
-      <img src="media/{{cate.image}}" alt="" />
-      <a href="{% url 'productsiteams' cate.slug %}" class="btn">shop now</a>
+     
+      <img src="{{cate.image}}" alt="" class="cateimage" />
+    
+     
+      {% if user.is_authenticated and user.is_superuser %}
+      <a href="{% url 'editcategory' cate.id %}" class="btn"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+      <a href="{% url 'deletecategory' cate.id %}" class="btn"><i class="fa-solid fa-trash"></i> Delete</a>
+
+
+      {% endif %}
+    
+
+      <a href="{% url 'productsiteams' cate.slug %}" class="btn"><i class="fa-solid fa-eye"></i>  View</a>
+      
     </div>
     {% endfor %}
+    {% if user.is_authenticated and user.is_superuser %}
+
+    <a href="{% url 'addcategory' %}" class="btncategory"><i class="fa-solid fa-plus"></i></a>
+    {% endif %}
 
     
     

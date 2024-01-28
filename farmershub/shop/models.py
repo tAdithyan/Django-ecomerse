@@ -1,31 +1,10 @@
 from django.db import models
-
-    
-class latestProducts(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.TextField()
-    Currentprice = models.DecimalField(max_digits=10, decimal_places=2)
-    Oldprice=models.DecimalField(max_digits=10, decimal_places=2,blank=True)
-    # category = models.ForeignKey(Categories, on_delete=models.CASCADE)
-    Discount=models.IntegerField()
-    image=models.ImageField(upload_to='newproducts', null=True)
-
-
-
-    def __str__(self):
-        return self.name
+from django.contrib.auth.models import User
 
     
 
-class banner_area(models.Model):
-   image=models.ImageField(upload_to='banner', null=True)
-   title=models.CharField(max_length=100,default="" ,null=True)
-   deal=models.CharField(max_length=50,default="",null=True)
-   sale=models.IntegerField(null=True)
-   discount=models.IntegerField(null=True)
-   link=models.CharField(max_length=100,default="",null=True,blank=True)
-   def __str__(self) -> str:
-     return self.title
+    
+
 
 
 
@@ -44,10 +23,35 @@ class Product(models.Model):
     Oldprice=models.DecimalField(max_digits=10, decimal_places=2,blank=True,null=True)
     Discount=models.IntegerField(null=True,blank=True)
     image=models.ImageField(upload_to='newproducts', null=True)
-
-
-
+    is_featured = models.BooleanField(default=False,null=True)
+    is_Dealsoftheday=models.BooleanField(default=False,null=True)
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
+class Profile(models.Model):
+        user=models.OneToOneField(User,null=True,on_delete=models.CASCADE)
+        username=models.CharField(null=True,max_length=225)
+        bio=models.TextField()
+        image=models.ImageField(upload_to='newproducts', null=True)
+
+        def __str__(self):
+            return str(self.user)
+        
+class CartItem(models.Model):
+    cart = models.ForeignKey('Cart', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.quantity} x {self.product.name}"
+
+class Cart(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    products = models.ManyToManyField(Product, through='CartItem')
+
+    def __str__(self):
+        return f"Cart for {self.user.username}"
+
+User.profile = property(lambda u: Profile.objects.get_or_create(user=u)[0])
+User.cart = property(lambda u: Cart.objects.get_or_create(user=u)[0])

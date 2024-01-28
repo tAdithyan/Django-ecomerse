@@ -1,3 +1,6 @@
+
+
+
 let menu = document.querySelector("#menu-bar");
 let navbar = document.querySelector(".navbar");
 let header = document.querySelector(".header-2");
@@ -15,5 +18,4 @@ window.onscroll = () => {
     header.classList.remove("active");
   }
 };
-
 

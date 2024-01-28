@@ -18,17 +18,20 @@
     </div>
     <div id="two">
       <div class="iteamimage">
-        <img src="media/{{productdetails.image.urls}}" alt="">
+        <img src="/shop/{{blog.image}}" alt="">
 
 
       </div>
     </div>
     <div class="contentborder ">
-      <h1>{{productdetails.name}}</h1>
-      <p>{{productdetails.description}}</p>
-      <h4>REAL PRICE:<span class="real">${{productdetails.Oldprice}}</span><span class="disc"></span></h4>
-      <h3>DISCOUNT PRICE:${{productdetails.Currentprice}}</h3>
+      <h1>{{blog.name}}</h1>
+      <p>{{blog.description}}</p>
+      <h4>REAL PRICE:<span class="real">${{blog.Oldprice}}</span><span class="disc"></span></h4>
+      <h3>DISCOUNT PRICE:${{blog.Currentprice}}</h3>
       <button type="button" class="cartbutton">Add To Cart</button>
+      
+      
+
     </div>
 </div>
 </div>

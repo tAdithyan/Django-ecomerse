@@ -1,0 +1,275 @@
+{% extends 'home/base.html' %}
+{% block content %}
+{% load static %}
+{% include "home/header.html" %}
+
+<style>
+
+.leftcolumn {   
+  float: left;
+  width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  gap: 60px;
+  margin-top: 4px;
+}
+
+/* Add a card effect for articles */
+.card {
+   /* background-color: white; */
+   padding: 20px;
+   margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both
+}
+.header{
+  margin-top: 100px;
+  /* text-align: center; */
+}
+
+.column-66 {
+  float: left;
+  width: 66.66666%;
+  padding: 20px;
+  max-height: 328px;
+  overflow: scroll;
+  scroll-behavior: smooth;
+}
+
+.column-33 {
+  float: left;
+  width: 33.33333%;
+  padding: 20px;
+  display: flex;
+  /* background-color: #7fb825; */
+  max-height:328px;
+
+}
+
+.large-font {
+  font-size: 48px;
+}
+
+.xlarge-font {
+  font-size: 64px
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color:#7fb825;
+  border-radius: 30px;
+  border: 1px solid whitesmoke;
+}
+
+.button:hover{
+  color: #7fb825;
+  background-color: white;
+  border: 1px solid #7fb825;
+}
+
+img {
+  display: block;
+  height: auto;
+  
+}
+.postimg{
+  width: 100%;
+}
+.blogheader{
+  text-align: center;
+  background-color: #7fb825;
+  color: white;
+}
+
+.containers .row{
+  background-color: white;
+  margin: 30px;
+  border: 1px solid green;
+}
+.fakeimage{
+  min-width: 32%;
+}
+.large-font{
+  font-size: 15px;
+}
+.addbtn{
+  background-color: #04AA6D;
+  height: 20px;
+  width: 20px;
+  
+}
+.blog{
+  
+  border: 1px solid  red;
+}
+.body
+{
+  min-height: 100vh;
+}
+.blogiteams{
+ overflow: hidden;
+ /* background-image: linear-gradient(TO right, #7fb825, rgb(198, 198, 198)); */
+
+}
+.title{
+  font-size: 15px;
+}
+.addrow{
+  border: none;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+.aboutfakeimg{
+  min-height: 100px;
+  display: contents;
+}
+.aboutfakeimg img{
+  height: 255px;
+}
+
+</style>
+
+  
+
+<div class="header">
+  
+  <h1 class="blogheader">OUR BLOGS</h1> 
+  
+</div>
+
+
+<div class="blogiteams">
+
+
+  <div class="leftcolumn">
+    <!-- {% for post in  blog %}
+      
+ 
+    <div class="card">
+      <h2>{{post.title}}</h2>
+      <h5></h5>
+      <div class="fakeimg" style="height:200px;"><img src="/static/images/home/cow.jpg" alt="" height="200px" width="200px"></div>
+      <p>Some text..</p>
+      <p>{{post.indroduction}}</p>
+    </div>
+    {% endfor %}
+     -->
+
+
+<!-- The App Section -->
+<div class="containers">
+  {% if user.is_authenticated and user.is_superuser %}
+
+  <div class="addrow">
+    
+      
+     <a href="{% url 'addblogs' %}"> <button class="button"><i class="fa-solid fa-plus"></i> ADD BLOG</button></a>
+    
+  </div>  
+  
+  
+  {% endif %}
+  
+  
+  {% for i  in  blog %}
+    
+  
+  <div class="row">
+    <div class="column-66">
+      <h1 class="large-font"><b>uploaded on: {{i.upload_date}}</b></h1>
+      <h1 class="large-font" style="color:MediumSeaGreen;"><b></b></h1>
+      <p><span style="font-size:36px">{{i.title}}:-</span>{{i.description}} </p>
+      {% if user.is_authenticated and user.is_superuser %}
+      <a href="{% url 'deleteblog' i.id %}"><button class="button"><i class="fa-solid fa-trash"></i> DELETE</button></a>
+      <a href="{% url 'editblog' i.id %}"><button class="button"><i class="fa-solid fa-pen-to-square"></i> EDIT</button></a>
+     
+
+
+
+      {% endif %}
+    </div>
+    <div class="column-33">
+        <img src="{{i.image}}" width="335px" height="471px" alt="" class="postimg">
+    </div>
+  </div>
+  {% endfor %}
+  
+  
+</div>
+
+<!-- Clarity Section -->
+
+
+
+
+    
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>About Me</h2>
+      <div class="aboutfakeimg" style="height:100px;"><img src="{% static 'images/home/farmer.jpeg' %}" alt=""></div>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, magnam. Suscipit reprehenderit incidunt voluptatem impedit tempora aut fuga aperiam, illum repellat nihil rerum corporis tempore, accusamus qui ullam. Reprehenderit excepturi nam odio quasi ratione mollitia rerum libero cumque. Ut pariatur sequi facilis commodi nostrum velit modi iusto sit mollitia quibusdam vero qui iure eligendi, dolore similique? Ullam explicabo excepturi mollitia cum. Tempore labore quod corrupti ratione maiores enim error veniam repudiandae, officiis, exercitationem doloremque suscipit? Non ipsum labore vitae nisi dolorem aperiam libero voluptate modi? Inventore, sit ea unde possimus, numquam, eius consequuntur suscipit tempora aliquam et dolores quaerat totam!</p>
+    </div>
+    <div class="card">
+      <h3>Popular Post</h3>
+      {% for pop in popular %}
+        
+     
+      <div class="fakeimg"><img src="{{pop.image}}" alt="" height="50px" width="50px" class="fakeimage">
+        
+        <h1 class="title"> {{pop.title}}</h1>
+      
+       </div><br>
+      {% endfor %}
+     
+    </div>
+   
+  </div>
+</div>
+
+
+
+</body>
+</html>
+</div>
+</body>
+{% endblock content %}
