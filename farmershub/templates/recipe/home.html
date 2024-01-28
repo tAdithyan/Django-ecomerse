@@ -132,7 +132,7 @@
   background-color: white;
 }
 .addbtn{
-  margin-left: 70px;
+  
   height: 50px;
   width: 140px;
   border: 3px dotted #ffffff;
@@ -152,6 +152,7 @@
   text-align: center;
   color: white;
   text-transform: uppercase;
+  font-size: 20px;
 }
 .heading{
   text-align: center;
@@ -215,7 +216,7 @@
       <div class="flip-card-back">
 
        
-        <p>{{rec.description}}</p>
+        <!-- <p>{{rec.description}}</p> -->
        
         {% if user.is_authenticated and user.is_superuser %}
 

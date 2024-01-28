@@ -202,7 +202,7 @@ img {
   <div class="addrow">
     
       
-     <a href="{% url 'addblogs' %}"> <button class="button">ADD BLOG</button></a>
+     <a href="{% url 'addblogs' %}"> <button class="button"><i class="fa-solid fa-plus"></i> ADD BLOG</button></a>
     
   </div>  
   
@@ -216,11 +216,11 @@ img {
   <div class="row">
     <div class="column-66">
       <h1 class="large-font"><b>uploaded on: {{i.upload_date}}</b></h1>
-      <h1 class="large-font" style="color:MediumSeaGreen;"><b>Why buy it?</b></h1>
+      <h1 class="large-font" style="color:MediumSeaGreen;"><b></b></h1>
       <p><span style="font-size:36px">{{i.title}}:-</span>{{i.description}} </p>
       {% if user.is_authenticated and user.is_superuser %}
-      <a href="{% url 'deleteblog' i.id %}"><button class="button">DELETE</button></a>
-      <a href="{% url 'editblog' i.id %}"><button class="button">EDIT</button></a>
+      <a href="{% url 'deleteblog' i.id %}"><button class="button"><i class="fa-solid fa-trash"></i> DELETE</button></a>
+      <a href="{% url 'editblog' i.id %}"><button class="button"><i class="fa-solid fa-pen-to-square"></i> EDIT</button></a>
      
 
 

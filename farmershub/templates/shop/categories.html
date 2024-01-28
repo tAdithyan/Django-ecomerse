@@ -11,17 +11,19 @@
     <div class="box card rounded-2"  >
       <h3>{{cate.name}}</h3>
       <!-- <p>up to {{cate.discount}} off</p> -->
-      <img src="{{cate.image}}" alt="" />
+     
+      <img src="{{cate.image}}" alt="" class="cateimage" />
+    
      
       {% if user.is_authenticated and user.is_superuser %}
-      <a href="{% url 'editcategory' cate.id %}" class="btn"><i class="fa-solid fa-pen-to-square"></i></a>
-      <a href="{% url 'deletecategory' cate.id %}" class="btn"><i class="fa-solid fa-trash"></i></a>
+      <a href="{% url 'editcategory' cate.id %}" class="btn"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+      <a href="{% url 'deletecategory' cate.id %}" class="btn"><i class="fa-solid fa-trash"></i> Delete</a>
 
 
       {% endif %}
     
 
-      <a href="{% url 'productsiteams' cate.slug %}" class="btn"><i class="fa-solid fa-eye"></i></a>
+      <a href="{% url 'productsiteams' cate.slug %}" class="btn"><i class="fa-solid fa-eye"></i>  View</a>
       
     </div>
     {% endfor %}

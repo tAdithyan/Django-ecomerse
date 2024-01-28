@@ -32,6 +32,9 @@ body{
   color: white;
 
 }
+.hero-img{
+
+}
 
 
 h1{
@@ -196,15 +199,15 @@ p{
         <h2>Instructions</h2>
            
            
-                <p>{{blog.instructions}}</p>
+                <p>{{blog.instructions|linebreaks }}</p>
            
            
             
             
                
-           
 
        </section>
+       
        <a href="{% url 'shop' %}"><button class="addbtn">SHOP ITEAMS</button></a>  
    </main>
 </body>

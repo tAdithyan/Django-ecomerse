@@ -34,12 +34,11 @@
 
         {% if user.is_authenticated and user.is_superuser %}
   
-       <a href="{% url 'addproduct' %}" class="addbtn"><i class="fa-solid fa-plus"></i></a>
+       <a href="{% url 'addproduct' %}" class="addbtn"><i class="fa-solid fa-plus"></i> Add</a>
        
 
        
 {% endif %}
-<a class="nav-link cart " aria-current="page" href="{% url 'cart' %}" style="color:white;"><i class="fa-solid fa-cart-shopping" style="color: white"></i>Cart</a>
 
 
        
