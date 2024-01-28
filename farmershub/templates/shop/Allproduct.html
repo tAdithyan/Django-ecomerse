@@ -49,7 +49,7 @@
       </div>
       {% endif %}
     
-      <a href="{% url 'content' iteam.id %}"><img src="/shop/{{iteam.image}}" alt="" /></a>
+      <a href="{% url 'iteamcontent' iteam.id %}"><img src="/shop/{{iteam.image}}" alt="" /></a>
     
       <h3>{{iteam.name}}</h3>
       <p>{{iteam.description}}</p>
@@ -67,8 +67,8 @@
     </div>
       {% if user.is_authenticated and user.is_superuser %}
   
-      <a href="{% url 'editproduct'  iteam.id %}" class="btn"><i class="fa-solid fa-pen-to-square"></i></a>
-      <a href="{% url 'deleteproduct' iteam.id %}" class="btn"><i class="fa-solid fa-trash"></i></a>
+      <a href="{% url 'editproduct'  iteam.id %}" class="btn"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+      <a href="{% url 'deleteproduct' iteam.id %}" class="btn"><i class="fa-solid fa-trash"></i>Delete</a>
       {% else %}
       <a href="#" class="btn">ADD TO CART</a>
 

@@ -31,14 +31,16 @@
         <button class="btn " type="submit" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
         
         </form>
-       
+
         {% if user.is_authenticated and user.is_superuser %}
   
-       <a href="{% url 'addproduct' %}" class="addbtn"><i class="fa-solid fa-plus"></i></a>
+       <a href="{% url 'addproduct' %}" class="addbtn"><i class="fa-solid fa-plus"></i> Add</a>
        
 
        
 {% endif %}
+
+
        
       </div>
     </header>

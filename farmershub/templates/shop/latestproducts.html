@@ -16,7 +16,7 @@
         <!-- <a href="#" class="fas fa-share"></a>
         <a href="#" class="fas fa-heart"></a> -->
       </div>
-      <a href="{% url 'content' latest.id %}"><img src="{{latest.image}}" alt="" /></a>
+      <a href="{% url 'iteamcontent' latest.id %}"><img src="{{latest.image}}" alt="" /></a>
       <h3>{{latest.name}}</h3>
       <p>{{latest.description}}</p>
       <!-- <div class="stars">
@@ -37,8 +37,8 @@
       <!-- <a href="#" class="btn">Add to cart</a> -->
       {% if user.is_authenticated and user.is_superuser %}
   
-      <a href="{% url 'editproduct'  latest.id %}" class="btn">Edit</a>
-      <a href="{% url 'deleteproduct' latest.id %}" class="btn">Delete</a>
+      <a href="{% url 'editproduct'  latest.id %}" class="btn"><i class="fa-solid fa-pen-to-square"></i>Edit</a>
+      <a href="{% url 'deleteproduct' latest.id %}" class="btn"><i class="fa-solid fa-trash"></i>Delete</a>
       {% else %}
       <a href="#" class="btn">Add to cart</a>
 
