@@ -24,12 +24,11 @@ urlpatterns = [
     path('addcategory/',views.addcategoryiteam,name='addcategory'),
     path('editcategory/<int:id>',views.editcategory,name='editcategory'),
     path('deletecategory/<int:id>',views.deletecategory,name='deletecategory'),
-
-
+    path('addCart/<int:id>',views.addToCart,name='addToCart'),
 
     path('editproduct/<int:id>',views.editproduct,name='editproduct'),
 
-    path('cart',views.cart,name='cart'),
+    # path('cart',views.cart,name='cart'),
 
 
     #reset password
