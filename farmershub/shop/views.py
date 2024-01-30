@@ -42,15 +42,13 @@ def log_in(request):
   email=request.POST.get('email')
 
   password=request.POST.get('password')
+
   user =authenticate(request, username=email, password=password)
   
   
   if user is not None:
      login(request,user)
-    
 
-   
-   
   else:
      pass
   return redirect('shop')
@@ -68,6 +66,8 @@ def sign_up(request):
 
    fname=request.POST.get('name')
    email=request.POST.get('email')
+
+
 
    password=request.POST.get('password')
 
@@ -222,5 +222,12 @@ def deleteproduct(request,id):
           blog.delete()
           return redirect(shop)
          return render(request,'shop/delete.html',{'blog':blog})
-def cart(request):
-   return render(request,'cart/cart.html')
+def addToCart(request,id):
+   
+   email=request.GET.get('productQuantity')
+   print(email)
+   print('Product Id :',id)
+
+
+   return redirect(shop)
+   

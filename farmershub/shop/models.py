@@ -52,6 +52,9 @@ class Cart(models.Model):
 
     def __str__(self):
         return f"Cart for {self.user.username}"
+    
+    
+
 
 User.profile = property(lambda u: Profile.objects.get_or_create(user=u)[0])
 User.cart = property(lambda u: Cart.objects.get_or_create(user=u)[0])
