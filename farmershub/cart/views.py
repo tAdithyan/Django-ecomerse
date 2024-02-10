@@ -6,11 +6,6 @@ def cart(request):
  return render(request,'cart/cart.html',{'product':product})
 
 
-def cart_add(request):
-  pass
+def orderconfir(request):
+  return render(request,'cart/orderconfirmation.html')
 
-def cart_delete(request):
-  pass
-
-def cart_update(request):
-  pass

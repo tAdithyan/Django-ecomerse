@@ -46,12 +46,14 @@ def log_in(request):
   user =authenticate(request, username=email, password=password)
   
   
-  if user is not None:
-     login(request,user)
-
+  if user:
+    form=login(request,user)
+    return redirect('shop')
+    
   else:
-     pass
-  return redirect('shop')
+     messages.error(request,"invalid user name")
+
+  
  
  
 
@@ -80,7 +82,6 @@ def sign_up(request):
   
 def log_out(request):
     logout(request)
-     
     return redirect("shop")
 
 
@@ -153,7 +154,7 @@ def content(request,id):
     
      
   
-  return render(request,'shop/onepage.html',contexnt)
+  return render(request,'shop/contentpage.html',contexnt)
 
 def addproduct(request):
    if request.method=='POST':

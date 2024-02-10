@@ -30,7 +30,7 @@
   <!---navbar-->
   <section class="header">
     <nav class="navbar navbar-expand-lg   fixed-top bg-none bg-light" id="navbar">
-      <div class="container-fluid">
+      <div class="container-fluid" style="margin-left: 30px;">
         <a class="navbar-brand" href="#"><img src="{% static 'images/home/logoo.png' %}" /></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
           aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,14 +52,21 @@
 
            <!-- <a class="nav-link  " aria-current="page" href="{% url 'logout' %}" ><i class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a> -->
            <div class="dropdown">
+            
+
+
             <!-- <img class=" btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" src="/static/images/home/user.png" height="50px" width="50px-"> -->
-            <a class="nav-link btn-secondary dropdown-toggle "type="button"  aria-current="page" data-bs-toggle="dropdown"  aria-expanded="false" href="#"><i class="fa-solid fa-user"></i>User</a>
+            <a class="nav-link btn-secondary dropdown-toggle "type="button"  aria-current="page" data-bs-toggle="dropdown"  aria-expanded="false" href="#"><i class="fa-solid fa-user"></i>USER</a>
+            
+
+            
+
+       
             <ul class="dropdown-menu">
               <img src="/static/images/home/farmer.jpeg" alt="" height="200px" width="230px">
 
               <!-- <li><a class="dropdown-item" href="#">{{user.profile.user}}</a></li> -->
               <p class="dropdown-item">{{user.profile.user}}</p>
-              <li><a class="dropdown-item" href="#">profile</a></li>
 
               <li><a class="dropdown-item" href="{% url 'logout' %}">log-out <i class="fa-solid fa-right-to-bracket"></i></a> </li>
               
