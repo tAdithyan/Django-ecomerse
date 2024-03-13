@@ -4,7 +4,7 @@
   <h1 class="heading">shop by<span>category</span></h1>
   
 
-  <div class="box-container container" >
+  <div class="box-container container"  >
     {% for cate in Catagory  %}
       
   
@@ -12,7 +12,7 @@
       <h3>{{cate.name}}</h3>
       <!-- <p>up to {{cate.discount}} off</p> -->
      
-      <img src="{{cate.image}}" alt="" class="cateimage" />
+      <img src="{{cate.image}}" alt="" class="cateimage" style="filter: brightness(100%);" />
     
      
       {% if user.is_authenticated and user.is_superuser %}

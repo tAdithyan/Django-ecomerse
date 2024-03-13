@@ -18,6 +18,13 @@
            <img src="/static/images/home/logoo.png" alt="" height="100px" width="100px">
               <h2 class="fw-bold mb-2 text-uppercase  ">Login</h2>
               <p class="text-white-50 mb-5">Please enter your Email and password!</p>
+              {% if messages %}
+              {% for messages in  messages %}
+              <p style="color: rgb(255, 49, 49);">invalid email or password </p>
+                
+              {% endfor %}
+            {% endif %}
+
               <form  action="{% url 'login' %}" method="post">
                 {% csrf_token %}
 
@@ -29,6 +36,8 @@
               <div class="form-outline form-white mb-4">
                 <input type="password" id="typePasswordX" class="form-control form-control-lg"  placeholder="Enter your Password" width="50px" name="password"/>
                 <label class="form-label" for="typePasswordX"></label>
+                <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()"> 
+        <label for="showPassword">Show Password</label>
               </div>
              
 
@@ -36,11 +45,7 @@
 
               <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
 
-              <div class="d-flex justify-content-center text-center mt-4 pt-1">
-                <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
-                <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
-                <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
-              </div>
+              
 
             </div>
 
@@ -58,6 +63,17 @@
   </div>
 </section>
 </form>
+<script>
+  function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("typePasswordX");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+</script>
+
 {% include "home/base.html" %}
 
 

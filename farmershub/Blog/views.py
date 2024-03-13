@@ -37,7 +37,7 @@ def editblog(request,id):
       blogs=Blog.objects.get(id=id)
   
       if request.method=='POST':
-       form=addblog(request.POST,instance=blogs)
+       form=addblog(request.POST,request.FILES,instance=blogs)
        if form.is_valid():
            form.save()
            return redirect(blog)

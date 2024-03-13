@@ -2,14 +2,9 @@
 {% load static %}
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+
   
-</head>
+
 <body>
   <div class="containers ">
   <div class="wrapper ">
@@ -28,7 +23,9 @@
       <p>{{blog.description}}</p>
       <h4>REAL PRICE:<span class="real">${{blog.Oldprice}}</span><span class="disc"></span></h4>
       <h3>DISCOUNT PRICE:${{blog.Currentprice}}</h3>
-      <button type="button" class="cartbutton">Add To Cart</button>
+      
+      <a class="btn" onclick="addToCart('{{blog.id}}','{{blog.Currentprice}}','{{blog}}')">Add to cart</a>
+
       
       
 
@@ -36,8 +33,7 @@
 </div>
 </div>
 
-  
-</body>
-</html>
+  <script src="{% static 'js/shop2.js' %}"></script>
+
 {% include "home/base.html" %}
 {% endblock content %}

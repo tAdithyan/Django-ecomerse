@@ -42,18 +42,18 @@ def log_in(request):
   email=request.POST.get('email')
 
   password=request.POST.get('password')
+
   user =authenticate(request, username=email, password=password)
   
   
-  if user is not None:
+  if user:
      login(request,user)
-    
+     return redirect('shop')
 
-   
-   
+
+
   else:
-     pass
-  return redirect('shop')
+    messages.error(request,"invalid user name")
  
  
 
@@ -69,11 +69,14 @@ def sign_up(request):
    fname=request.POST.get('name')
    email=request.POST.get('email')
 
+
+
    password=request.POST.get('password')
 
    user = User.objects.create_user(first_name=fname,username=email,email=email, password=password)
  
    user.save()
+
    return redirect(log_in)
  
   return render(request,'login_signup/signup/signup.html')
@@ -143,8 +146,11 @@ def user_is_superuser(user):
 
 def content(request,id):
   blog=Product.objects.get(id=id)
+
+
   contexnt={
-               'blog':blog
+               'blog':blog,
+               'login_error_message': "You need to login to add this product to the cart."
   }
  
 
@@ -153,7 +159,7 @@ def content(request,id):
     
      
   
-  return render(request,'shop/onepage.html',contexnt)
+  return render(request,'shop/contentpage.html',contexnt)
 
 def addproduct(request):
    if request.method=='POST':
@@ -167,16 +173,18 @@ def addproduct(request):
 def editproduct(request,id):
      
       blog=Product.objects.get(id=id)
+     
   
       if request.method=='POST':
-       form=additeam(request.POST,instance=blog)
+       form=additeam(request.POST or None,request.FILES or None,instance=blog,)
+      
        if form.is_valid():
            form.save()
            return redirect(products)
       else:
           form=additeam(instance=blog)
 
-
+       
 
       return render(request,'shop/addproduct.html',{'form':form})
 def addcategoryiteam(request):
@@ -222,5 +230,13 @@ def deleteproduct(request,id):
           blog.delete()
           return redirect(shop)
          return render(request,'shop/delete.html',{'blog':blog})
-def cart(request):
-   return render(request,'cart/cart.html')
+@login_required
+def addToCart(request,id):
+   
+   email=request.GET.get('productQuantity')
+   print(email)
+   print('Product Id :',id)
+
+
+   return redirect(shop)
+   

@@ -65,7 +65,7 @@ def editrecipes(request,id):
       blog=Recipe.objects.get(id=id)
   
       if request.method=='POST':
-       form=addrecipes(request.POST,instance=blog)
+       form=addrecipes(request.POST,request.FILES,instance=blog)
        
        if form.is_valid():
            form.save()

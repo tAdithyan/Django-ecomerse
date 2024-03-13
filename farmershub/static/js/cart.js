@@ -48,3 +48,4 @@ function updateCartItemPrice(priceElement, pricePerItem, quantity) {
     const totalPrice = (pricePerItem * quantity).toFixed(2);
     priceElement.textContent = "$" + totalPrice;
 }
+
