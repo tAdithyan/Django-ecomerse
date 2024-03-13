@@ -1,0 +1,355 @@
+{% extends "shop/base.html" %} {% block content %}
+
+<!-- <section class="h-100" style="background-color: #eee;">
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-10">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
+          <div>
+            <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i
+                  class="fas fa-angle-down mt-1"></i></a></p>
+          </div>
+        </div>
+
+        
+
+
+<div class="card rounded-3 mb-4"  >
+          <div class="card-body p-4" id='main'>
+
+          </div>
+        </div>
+
+
+        <div class="card">
+          <div class="card-body">
+            <button type="button" class="btn btn-warning btn-block btn-lg" onClick ="clearStorage()" ><a href="{% url 'orderconfir' %}">Proceed to Pay</a></button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .col {
+        flex: 1;
+      }
+
+      .offset-lg-1 {
+        margin-left: 8.3333333333%;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 1.5em;
+        color: #007bff;
+      }
+
+      h2,
+      h3 {
+        font-size: 1.2em;
+        color: #333;
+      }
+
+      p {
+        font-size: 1em;
+        color: #868e96;
+      }
+
+      button {
+        padding: 8px 15px;
+        font-size: 1em;
+        cursor: pointer;
+        color: #000000;
+        border: none;
+        border-radius: 4px;
+        background-color: red;
+        -webkit-appearance: none;
+      }
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      input {
+        height: 50px;
+        width: 100px;
+        text-align: center;
+      }
+      .section{
+        min-height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha384-ZmpJ3F3iXHj5iJ5CfXRrrWJGFfKCiqsG0Hj1GGioCBrWwOc8IdTBQg5C1MRPaNTm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="main">
+    <div class="section">
+    <div id="main" class="container">
+      <h1 style="text-align: center">Shopping Cart</h1>
+      <!-- Cart items will be displayed here -->
+    </div>
+  </div>
+  </div>
+
+
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha384-ZmpJ3F3iXHj5iJ5CfXRrrWJGFfKCiqsG0Hj1GGioCBrWwOc8IdTBQg5C1MRPaNTm"
+      crossorigin="anonymous"
+    />
+
+ <script>
+      var retrievedCartData = JSON.parse(localStorage.getItem("cart")) || [];
+
+      let ul = document.createElement("ul");
+      let main = document.getElementById("main");
+      let totalDiv = document.createElement("div");
+      let totalHeading = document.createElement("h3");
+      let totalPrice = 0;
+
+      function updateCartAndUI() {
+        ul.innerHTML = ""; // Clear the current list
+        totalPrice = 0;
+        if (retrievedCartData.length == 0) {
+      // If cart is empty, display a message
+      document.getElementById("main").innerHTML = "<p>Your cart is empty.</p>";
+    }
+    else{
+
+        retrievedCartData.forEach((item) => {
+          if (item.productName) {
+            let li = document.createElement("li");
+            let h1 = document.createElement("h1");
+            let h3Name = document.createElement("h3");
+            let h3Price = document.createElement("h3");
+            let h3Quantity = document.createElement("h3");
+            let p = document.createElement("p");
+            let div = document.createElement("div");
+            let nameDiv = document.createElement("div");
+            let priceDiv = document.createElement("div");
+            let quantityDiv = document.createElement("div");
+            let buttonDiv = document.createElement("div");
+            let removeButton = document.createElement("button");
+            let incrementButton = document.createElement("button");
+            let decrementButton = document.createElement("button");
+            let updateQuantityInput = document.createElement("input");
+            let updateIcon = document.createElement("i"); // Update icon
+            let deleteIcon = document.createElement("i"); // Delete icon
+
+            var textNode = document.createTextNode(item.productName);
+            var quantity = document.createTextNode(item.quantity);
+
+            var productTotalPrice = item.productPrice * item.quantity;
+            totalPrice += productTotalPrice;
+            
+            var price = document.createTextNode(productTotalPrice + "$");
+
+            h1.appendChild(textNode);
+            p.appendChild(price);
+
+            h3Name.textContent = "Name";
+            h3Price.textContent = "Total Price";
+            h3Quantity.textContent = "Quantity: " + item.quantity + "kg"; // Display quantity here
+
+            updateQuantityInput.type = "number";
+            updateQuantityInput.value = item.quantity;
+            
+
+            // Add increment button
+            incrementButton.textContent = "+";
+            incrementButton.style.backgroundColor = "#7fb825";
+            incrementButton.style.color = "white";
+            incrementButton.style.height = "50px";
+            incrementButton.addEventListener("click", function () {
+              updateQuantity(item.productName, item.quantity + 1);
+            });
+
+            // Add decrement button
+            decrementButton.textContent = "-";
+            decrementButton.style.backgroundColor = "#7fb825";
+            decrementButton.style.color = "white";
+            decrementButton.style.height = "50px";
+            decrementButton.addEventListener("click", function () {
+              if (item.quantity > 0) {
+                updateQuantity(
+                  item.productName,
+                  item.quantity - 1,
+                  updateCartAndUI
+                );
+              }
+            });
+
+            // Add delete icon
+            deleteIcon.classList.add(
+              "fas",
+              "fa-trash-alt",
+              "text-danger",
+              "cursor-pointer"
+            );
+            deleteIcon.addEventListener("click", function () {
+              removeItemFromCart(item.productName);
+            });
+
+            div.classList.add(
+              "row",
+              "d-flex",
+              "justify-content-between",
+              "align-items-center"
+            );
+            nameDiv.classList.add("col-md-3", "col-lg-3", "col-xl-3");
+            priceDiv.classList.add(
+              "col-md-3",
+              "col-lg-2",
+              "col-xl-2",
+              "offset-lg-1"
+            );
+            quantityDiv.classList.add("col-md-2", "col-lg-2", "col-xl-2");
+            buttonDiv.classList.add(
+              "col-md-2",
+              "col-lg-2",
+              "col-xl-2",
+              "text-end"
+            ); // Align buttons to the right
+
+            nameDiv.appendChild(h3Name);
+            nameDiv.appendChild(h1);
+
+            priceDiv.appendChild(h3Price);
+            priceDiv.appendChild(p);
+
+            quantityDiv.appendChild(h3Quantity); // Displayed quantity
+
+            quantityDiv.appendChild(incrementButton); // Append the increment button
+            quantityDiv.appendChild(updateQuantityInput);
+
+            quantityDiv.appendChild(decrementButton); // Append the decrement button
+            quantityDiv.appendChild(updateIcon); // Append the update icon
+
+            buttonDiv.appendChild(deleteIcon); // Append the delete icon
+
+            div.appendChild(nameDiv);
+            div.appendChild(priceDiv);
+            div.appendChild(quantityDiv);
+            div.appendChild(buttonDiv);
+
+            li.classList.add("card", "rounded-3", "mb-4");
+            li.appendChild(div);
+
+            ul.appendChild(li);
+          }
+        });
+
+        ul.style.listStyle = "none";
+        main.appendChild(ul);
+
+        // totalHeading.textContent = 'Total Price of All Products: ' + totalPrice + "$";
+        totalDiv.innerHTML = ""; // Clear the current total
+        totalDiv.appendChild(totalHeading);
+        main.appendChild(totalDiv);
+
+        // Add Proceed to Pay button
+        let proceedToPayButton = document.createElement("button");
+        proceedToPayButton.textContent = "Proceed to Pay: " + totalPrice + "$";
+        proceedToPayButton.style.backgroundColor = "#7fb825";
+        proceedToPayButton.style.color = "white";
+        proceedToPayButton.addEventListener("click", function () {
+          proceedToPay();
+        });
+        totalDiv.style.justifyContent = "center";
+        totalDiv.style.display = "flex";
+        totalDiv.style.alignItems = "center";
+        totalDiv.appendChild(proceedToPayButton);
+
+        localStorage.setItem("cart", JSON.stringify(retrievedCartData));
+      }
+    }
+      function removeItemFromCart(productName) {
+        retrievedCartData = retrievedCartData.filter(
+          (item) => item.productName !== productName
+        );
+        updateCartAndUI();
+      }
+
+      function updateQuantity(productName, newQuantity) {
+        retrievedCartData.forEach((item) => {
+          if (item.productName === productName) {
+            item.quantity = newQuantity;
+          }
+        });
+
+        updateCartAndUI(); // Call updateCartAndUI directly, not as an argument
+      }
+
+      function proceedToPay() {
+        // Add your logic for proceeding to payment
+        window.location.href = "/cart/payment/?total=" + totalPrice ;  
+        clearStorage();
+      }
+
+      updateCartAndUI();
+
+      function clearStorage() {
+        localStorage.removeItem("cart");
+        updateCartAndUI();
+      }
+    </script> 
+   
+     
+      
+  </body>
+</html>
+
+{% include "home/base.html" %} {% endblock content %}

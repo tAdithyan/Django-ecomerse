@@ -1,0 +1,41 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{% static 'css/onepage.css' %}">
+  
+</head>
+<body>
+  <div class="containers ">
+  <div class="wrapper ">
+    <div id="one ">
+     
+    </div>
+    <div id="two">
+      <div class="iteamimage">
+        <img src="./orange.jpg">
+
+
+      </div>
+    </div>
+    <div class="contentborder ">
+      <h1>Orange</h1>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam porro tempore quos hic nemo fuga reiciendis, doloremque quod dolorum corporis veniam! Quisquam, quam esse. Voluptates, tempore cum? Deserunt doloribus fugiat quod, necessitatibus consequuntur totam? At nihil minus magnam mollitia sequi itaque suscipit magni. Soluta ea totam facere sint, veritatis consectetur.</p>
+      <h4>REAL PRICE:<span class="real">$180</span><span class="disc"></span></h4>
+      <h3>DISCOUNT PRICE:$150</h3>
+      <button type="button" class="cartbutton">Add To Cart</button>
+    </div>
+</div>
+</div>
+
+  
+</body>
+</html>
+{% include "home/base.html" %}
+{% endblock content %}

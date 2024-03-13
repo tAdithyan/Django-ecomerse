@@ -1,0 +1,39 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+
+
+  
+
+<body>
+  <div class="containers ">
+  <div class="wrapper ">
+    <div id="one ">
+     
+    </div>
+    <div id="two">
+      <div class="iteamimage">
+        <img src="/shop/{{blog.image}}" alt="">
+
+
+      </div>
+    </div>
+    <div class="contentborder ">
+      <h1>{{blog.name}}</h1>
+      <p>{{blog.description}}</p>
+      <h4>REAL PRICE:<span class="real">${{blog.Oldprice}}</span><span class="disc"></span></h4>
+      <h3>DISCOUNT PRICE:${{blog.Currentprice}}</h3>
+      
+      <a class="btn" onclick="addToCart('{{blog.id}}','{{blog.Currentprice}}','{{blog}}')">Add to cart</a>
+
+      
+      
+
+    </div>
+</div>
+</div>
+
+  <script src="{% static 'js/shop2.js' %}"></script>
+
+{% include "home/base.html" %}
+{% endblock content %}

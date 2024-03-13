@@ -1,0 +1,16 @@
+{% load static %}
+<section class="banner-container">
+
+    {% for content in Deals %}
+    
+  
+  <div class="banner">
+    <img src="{{content.image}}" alt="" />
+    <div class="content">
+      <h3 style="color: white; font-weight: 700;">{{content.name}}</h3>
+      <p style="color: white;">up to {{content.Discount}}% off</p>
+      <a href="{% url 'iteamcontent' content.id %}" class="btn"> check out</a>
+    </div>
+  </div>
+  {% endfor %}
+</section>

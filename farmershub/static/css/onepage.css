@@ -1,0 +1,111 @@
+
+.wrapper { 
+  border : 2px solid #000; 
+  overflow:hidden;
+  border: 1px solid red;
+}
+
+.wrapper div {
+   min-height: 200px;
+   padding: 10px;
+}
+#one {
+  background-color: gray;
+  float:left; 
+  margin-right:20px;
+  width:140px;
+  border-right:2px solid #000;
+}
+#two { 
+
+  overflow:hidden;
+  margin:10px;
+  /* min-height:170px;
+  min-width: 750px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+}
+
+@media screen and (max-width: 400px) {
+   #one { 
+    float: none;
+    margin-right:0;
+    width:auto;
+    border:0;
+    border-bottom:2px solid #000;    
+  }
+}
+
+.containers{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
+
+}
+.wrapper{
+  display: flex;
+  height:80vh;
+  width: 180vh;
+}
+.wrapper .one{
+ width: 550px;
+}
+
+.wrapper div {
+  min-height: 200px;
+  padding: 10px;
+}
+.iteamimage{
+  height: 600px;
+  width: 600px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.iteamimage img{
+ min-height: 500px;
+ min-width: 500px;
+
+}
+.contentborder{
+  display: flex;
+  height:80vh;
+  width: 180vh;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  line-height: 50px;
+
+}
+.contentborder h1,p,h4,h3{
+  margin-left: 50px;
+
+}
+.contentborder h1{
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.contentborder h4{
+  color: red;
+  text-decoration: line-through;
+}
+.cartbutton{
+  background-color: rgb(168, 255, 180);
+  height: 40px;
+  width: 120px;
+  border-radius: 10px;
+  font-size: 17px;
+  border: none;
+  margin-left: 50px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.contentborder .realv{
+  color: red;
+}

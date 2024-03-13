@@ -1,0 +1,293 @@
+<section class="product" id="product" name="product">
+  <h1 class="heading">latest<span>Products</span></h1>
+  <div class="box-container">
+
+
+    {% for latest in featured_products %}
+
+
+    <div class="box">
+      <span class="discount">NEW</span>
+      <!-- <span class="new">New</span> -->
+      <div class="icons">
+        <a href="#">-{{latest.Discount}}%</a>
+        <!-- <a href="#" class="fas fa-share"></a>
+        <a href="#" class="fas fa-heart"></a> -->
+      </div>
+      <a href="{% url 'iteamcontent' latest.id %}"><img src="{{latest.image}}" alt="" /></a>
+      <h3>{{latest.name}}</h3>
+      <p>{{latest.description}}</p>
+      <!-- <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+
+        <i class="fas fa-star"></i>
+      </div> -->
+      <div class="price">${{latest.Currentprice}}/Kg <span>${{latest.Oldprice}}/Kg</span></div>
+      <!-- <div class="quantity">
+        <span>Quantity</span>
+        <input type="number" min="1" max="1000" value="1" name="productQuantity" id="quantity" />
+        <span>/Kg</span>
+      </div> -->
+      <!-- <a href="#" class="btn">Add to cart</a> -->
+      <!-- <a href="#" class="btn">Add to cart</a> -->
+      {% if user.is_authenticated and user.is_superuser %}
+
+      <a href="{% url 'editproduct'  latest.id %}" class="btn"><i class="fa-solid fa-pen-to-square"></i>Edit</a>
+      <a href="{% url 'deleteproduct' latest.id %}" class="btn"><i class="fa-solid fa-trash"></i>Delete</a>
+      {% else %}
+      <a href="{% url 'iteamcontent'  latest.id %}" class="btn"><i class="fa-regular fa-eye"></i>View</a>
+
+      <!-- <a class="btn" onclick="addToCart('{{latest.id}}','{{latest.Currentprice}}','{{latest}}')">Add to cart</a> -->
+
+
+
+      {% endif %}
+
+    </div>
+
+    {% endfor %}
+    <!-- 
+    <div class="box">
+      <span class="discount">-33%</span>
+      <div class="icons">
+        <a href="#" class="fas fa-eye"></a>
+        <a href="#" class="fas fa-share"></a>
+        <a href="#" class="fas fa-heart"></a>
+      </div>
+      <img src="./images/carrot.jpg" alt="" />
+      <h3>Carrot</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+
+        <i class="fas fa-star"></i>
+      </div>
+      <div class="price">$10.25 <span>$13.20</span></div>
+      <span>Quantity</span>
+      <input type="number" min="1" max="1000" value="1" />
+      <span>/Kg</span>
+      <a href="#" class="btn">Add to cart</a>
+    </div>
+
+    <div class="box">
+      <span class="discount">-33%</span>
+      <div class="icons">
+        <a href="#" class="fas fa-eye"></a>
+        <a href="#" class="fas fa-share"></a>
+        <a href="#" class="fas fa-heart"></a>
+      </div>
+      <img src="./images/carrot.jpg" alt="" />
+      <h3>Carrot</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+
+        <i class="fas fa-star"></i>
+      </div>
+      <div class="price">$10.25 <span>$13.20</span></div>
+      <div class="quantity">
+      <span>Quantity</span>
+      <input type="number" min="1" max="1000" value="1" />
+      <span>/Kg</span>
+    </div>
+      <a href="#" class="btn">Add to cart</a>
+    </div>
+
+
+    <div class="box">
+      <span class="discount">-33%</span>
+      <div class="icons">
+        <a href="#" class="fas fa-eye"></a>
+        <a href="#" class="fas fa-share"></a>
+        <a href="#" class="fas fa-heart"></a>
+      </div>
+      <img src="./images/carrot.jpg" alt="" />
+      <h3>Carrot</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+
+        <i class="fas fa-star"></i>
+      </div>
+      <div class="price">$10.25 <span>$13.20</span></div>
+      <div class="quantity">
+      <span>Quantity</span>
+      <input type="number" min="1" max="1000" value="1" />
+      <span>/Kg</span>
+    </div>
+      <a href="#" class="btn">Add to cart</a>
+    </div>
+
+
+    <div class="box">
+      <span class="discount">-33%</span>
+      <div class="icons">
+        <a href="#" class="fas fa-eye"></a>
+        <a href="#" class="fas fa-share"></a>
+        <a href="#" class="fas fa-heart"></a>
+      </div>
+      <img src="./images/carrot.jpg" alt="" />
+      <h3>Carrot</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+
+        <i class="fas fa-star"></i>
+      </div>
+      <div class="price">$10.25 <span>$13.20</span></div>
+      <div class="quantity">
+      <span>Quantity</span>
+      <input type="number" min="1" max="1000" value="1" />
+      <span>/Kg</span>
+    </div>
+      <a href="#" class="btn">Add to cart</a>
+    </div>
+
+
+    <div class="box">
+      <span class="discount">-33%</span>
+      <div class="icons">
+        <a href="#" class="fas fa-eye"></a>
+        <a href="#" class="fas fa-share"></a>
+        <a href="#" class="fas fa-heart"></a>
+      </div>
+      <img src="./images/carrot.jpg" alt="" />
+      <h3>Carrot</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+
+        <i class="fas fa-star"></i>
+      </div>
+      <div class="price">$10.25 <span>$13.20</span></div>
+      <div class="quantity">
+      <span>Quantity</span>
+      <input type="number" min="1" max="1000" value="1" />
+      <span>/Kg</span>
+    </div>
+      <a href="#" class="btn">Add to cart</a>
+    </div>
+
+
+    <div class="box">
+      <span class="discount">-33%</span>
+      <div class="icons">
+        <a href="#" class="fas fa-eye"></a>
+        <a href="#" class="fas fa-share"></a>
+        <a href="#" class="fas fa-heart"></a>
+      </div>
+      <img src="./images/carrot.jpg" alt="" />
+      <h3>Carrot</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+
+        <i class="fas fa-star"></i>
+      </div>
+      <div class="price">$10.25 <span>$13.20</span></div>
+      <div class="quantity">
+      <span>Quantity</span>
+      <input type="number" min="1" max="1000" value="1" />
+      <span>/Kg</span>
+    </div>
+      <a href="#" class="btn">Add to cart</a>
+    </div>
+
+
+    <div class="box">
+      <span class="discount">-33%</span>
+      <div class="icons">
+        <a href="#" class="fas fa-eye"></a>
+        <a href="#" class="fas fa-share"></a>
+        <a href="#" class="fas fa-heart"></a>
+      </div>
+      <img src="./images/carrot.jpg" alt="" />
+      <h3>Carrot</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+
+        <i class="fas fa-star"></i>
+      </div>
+      <div class="price">$10.25 <span>$13.20</span></div>
+      <div class="quantity">
+      <span>Quantity</span>
+      <input type="number" min="1" max="1000" value="1" />
+      <span>/Kg</span>
+    </div>
+      <a href="#" class="btn">Add to cart</a>
+    </div>
+
+
+    <div class="box">
+      <span class="discount">-33%</span>
+      <div class="icons">
+        <a href="#" class="fas fa-eye"></a>
+        <a href="#" class="fas fa-share"></a>
+        <a href="#" class="fas fa-heart"></a>
+      </div>
+      <img src="./images/carrot.jpg" alt="" />
+      <h3>Carrot</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+
+        <i class="fas fa-star"></i>
+      </div>
+      <div class="price">$10.25 <span>$13.20</span></div>
+      <div class="
+        ">
+      <span>Quantity</span>
+      <input type="number" min="1" max="1000" value="1" />
+      <span>/Kg</span>
+    </div>
+      <a href="#" class="btn">Add to cart</a>
+    </div>
+
+
+    <div class="box">
+      <span class="discount">-33%</span>
+      <div class="icons">
+        <a href="#" class="fas fa-eye"></a>
+        <a href="#" class="fas fa-share"></a>
+        <a href="#" class="fas fa-heart"></a>
+      </div>
+      <img src="./images/[removal.ai]_f85a0a7e-f6be-4aa3-97b0-d09aacc3ad35-pexels-anna-tukhfatullina-food-photographerstylist-2611818.png" alt="" />
+      <h3>Carrot</h3>
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+
+        <i class="fas fa-star"></i>
+      </div>
+      <div class="price">$10.25 <span>$13.20</span></div>
+      <div class="quantity">
+      <span>Quantity</span>
+      <input type="number" min="1" max="1000" value="1" />
+      <span>/Kg</span>
+    </div>
+      <a href="#" class="btn">Add to cart</a>
+    </div> -->
+  </div>
+</section>

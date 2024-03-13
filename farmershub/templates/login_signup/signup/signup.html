@@ -1,0 +1,83 @@
+{% extends 'shop/base.html' %}
+{% block content%}
+<section class="vh-30 gradient-custom" style="  background-image: linear-gradient(TO right, #7fb825, rgb(198, 198, 198));" >
+	<img src="/static/images/login/bg.png" width="1000px " height="900px" style="position: absolute; top: 100px;left: 0;">
+
+  <div class="container py-5 h-5 w-100">
+
+    <div class="row d-flex justify-content-center align-items-center h-50">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body ps-5 pe-5 text-center">
+
+            <div class="mb-md-5 mt-md-4 pb-5">
+           <img src="/static/images/home/logoo.png" alt="" height="100px" width="100px">
+              <h2 class="fw-bold mb-2 text-uppercase">SignUp</h2>
+              <p class="text-white-50 mb-5">Register Your Account</p>
+              {% if messages %}
+              {% for messages in  messages %}
+              <p style="color: rgb(255, 49, 49);">user exixt </p>
+                
+              {% endfor %}
+            {% endif %}
+              <form  action="{% url 'signup' %}" method="post">
+                {% csrf_token %}
+
+              <div class="form-outline form-white mb-4">
+                <input type="text
+                " id="typeEmailX" class="form-control form-control-lg" placeholder="Enter Your Username "  name="name"/>
+                <label class="form-label" for="typeEmailX"></label>
+              </div>
+
+
+              <div class="form-outline form-white mb-4">
+                <input type="email" id="typeEmailX" class="form-control form-control-lg" placeholder="Enter Your Email "  name="email"/>
+                <label class="form-label" for="typeEmailX"></label>
+              </div>
+
+              <div class="form-outline form-white mb-4">
+                <input type="password" id="typePasswordX" class="form-control form-control-lg"  placeholder="Enter your Password" width="50px" name="password"/>
+                <label class="form-label" for="typePasswordX"></label>
+                <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()"> 
+                <label for="showPassword">Show Password</label>
+              </div>
+             
+
+
+              <button class="btn btn-outline-light btn-lg px-5" type="submit">SignUp</button>
+
+            
+
+            </div>
+
+            <div>
+              <p class="mb-0">If You Already Have An Account...?<a href="{% url 'login' %}" class="text-white-50 fw-bold">Sign In</a>
+              </p>
+            </div>
+
+          </div>
+					<img src="/static/images/login/footer-removebg.png" height="100px" width="100%" >
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+   function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("typePasswordX");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+</script>
+{% include "home/base.html" %}
+
+
+
+{% endblock content%}
+
+
+
