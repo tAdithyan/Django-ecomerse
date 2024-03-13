@@ -1,0 +1,50 @@
+{% extends "shop/base.html" %}
+
+{% load static %}
+{% block content %}
+{% include "shop/header.html" %}
+{% include "shop/banner.html" %}
+
+<h1 class="heading">DEALS OF THE <span>DAY</span></h1>
+{% include "shop/deals.html" %}
+{% include "shop/categories.html" %}
+{% include "shop/latestproducts.html" %}
+    <!---home-->
+   
+
+  
+ <section class="contact" id="contact">
+  <h1 class="heading"><span>contact</span> us</h1>
+  <form action="">
+    <div class="inputbox">
+    <input type="text" placeholder="name">
+    <input type="email" placeholder="email">
+
+  </div>
+
+
+  <div class="inputbox">
+    <input type="number" placeholder="number">
+    <input type="text" placeholder="subject">
+
+  </div>
+  <textarea name="" id="" cols="30" rows="10" placeholder="messege"></textarea>
+  <input type="submit" value="send messege" class="btn">
+  </form>
+ </section>
+ <section class="newsletter">
+  <h3>Subscribe us for latest updates</h3>
+  <form action="">
+    <input type="email" class="box" placeholder="enter your email">
+    <input type="submit" class="btn" value="subscribe">
+  </form>
+
+ </section>
+  <!-- Footer -->
+  {% include "home/base.html" %}
+
+ </section>
+    <script src="{% static 'js/shop2.js' %}"></script>
+  </body>
+</html>
+{% endblock content %}
